@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  database: ecommerce_development
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: ecommerce_test
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  database: ecommerce_production
+  pool: 5
+  timeout: 5000
+  username: ecommerce
+  password: <%= ENV['ECOMMERCE_DATABASE_PASSWORD'] %>
