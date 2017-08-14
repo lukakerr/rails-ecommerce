@@ -3,4 +3,9 @@
 <%= @product.name %> -
 <%= @product.description %>
 
+<% @product.pictures.each do |picture| %>
+	<%= picture.image_file_name %>
+	<%= image_tag picture.image.url(:thumb) %>
+<% end %>
+
 <%= link_to "Edit", edit_product_path %>

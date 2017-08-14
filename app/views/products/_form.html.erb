@@ -4,5 +4,8 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <br>
+    <%= f.label :pictures %>
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+    <br>
     <%= f.submit "Add Product" %>
 <% end %>
