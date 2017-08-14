@@ -1,4 +1,6 @@
 <%= simple_form_for @product, :html => { :multipart => true } do |f| %>
+	<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Category"} %>
+	<br>
     <%= f.input :name %>
     <%= f.input :description %>
     <br>
