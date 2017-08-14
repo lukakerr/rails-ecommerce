@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  price: 9.99
+  old_price: 9.99
+  on_sale: false
+  sold_out: false
+  featured: false
+  quantity: 1
+
+two:
+  name: MyString
+  description: MyText
+  price: 9.99
+  old_price: 9.99
+  on_sale: false
+  sold_out: false
+  featured: false
+  quantity: 1

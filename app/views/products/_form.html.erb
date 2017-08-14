@@ -1,0 +1,6 @@
+<%= simple_form_for @product, :html => { :multipart => true } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <br>
+    <%= f.submit "Add Product" %>
+<% end %>
