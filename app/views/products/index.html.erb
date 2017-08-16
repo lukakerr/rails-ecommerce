@@ -1,8 +1,13 @@
-<h1>Index</h1>
-
-<% @product.each do |product| %>
-	<h2><%= link_to product.name, product %></h2>
-	<p><%= product.description %></p>
-<% end %>
-
-<%= link_to "New Product", new_product_path %>
+<div class="products">
+	<div class="products-grid">
+		<% @product.each do |product| %>
+			<div class="product-item">
+				<% product.pictures.limit(1).each do |picture| %>
+					<%= link_to image_tag(picture.image.url(:thumb)), product %>
+				<% end %>
+				<span>Purchase</span>
+				<p id="product-caption"><%= product.name %></p>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -1,15 +1,156 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+*= require_tree .
+*= require_self
+*/
+
+body, html {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	font-family: Helvetica Neue;
+	-webkit-font-smoothing: subpixel-antialiased;
+	height: 100%;
+}
+
+a {
+	color: #AAA;
+	text-decoration: none;
+	transition: all 0.5s;
+}
+
+a:hover {
+	color: #888;
+	transition: all 0.5s;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -142px;
+}
+
+.notice, .alert {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+
+.notice {
+	color: green;
+}
+
+.alert {
+	color: red;
+}
+
+/* Navigation */
+
+.nav {
+	margin-bottom: 100px;
+}
+
+.nav .nav-links {
+	text-align: center;
+	margin-top: 60px;
+}
+
+.nav .nav-links a {
+	margin: 0 1.1em;
+	font-size: 18px;
+}
+
+.logo {
+	display: block;
+	text-align: center;
+	margin-top: 60px;
+}
+
+.logo img {
+	width: 150px;
+}
+
+.divider {
+	color: #555;
+	margin: 0 20px;
+}
+
+/* Products Section */
+
+.products-grid {
+	padding: 0;
+	margin: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+.product-item img {
+	object-fit: cover;
+	width: 300px;
+	height: 300px;
+	padding: 5px;
+	margin-top: 10px;
+	line-height: 150px;
+}
+
+.product-item span {
+	position: relative;
+	margin-top: -307px;
+	margin-left: 5px;
+	font-size: 24px;
+	font-weight: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s;
+	width: 300px;
+	height: 300px;
+	background: white;
+	justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+}
+
+.product-item a:hover + span {
+	opacity: 0.8;
+	transition: opacity 0.3s;
+}
+
+#product-caption {
+	padding: 0;
+	text-align: center;
+	font-weight: 200;
+}
+
+/* Footer */
+
+.footer {
+	background: #3E4348;
+	width: calc(100vw - 40px);
+	padding: 20px;
+	color: #AAA;
+	display: flex;
+}
+
+.footer .column {
+	flex: 1;
+	padding: 5px 20px;
+	font-weight: 300;
+}
+
+.footer .column .col-header {
+	font-weight: 900;
+	display: block;
+	margin: 25px 0;
+}
+
+.footer .column a {
+	display: block;
+	margin: 20px 5px;	
+	font-size: 14px;
+}

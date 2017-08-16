@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
 	before_action :find_order, only: [:show, :edit, :update, :destroy]
-	before_action :authorize, only: [:index, :edit, :update, :destroy]
+	before_action :authorize_admin, only: [:index, :edit, :update, :destroy]
 
 	def index
 		@order = Order.all.order("created_ad DESC")

@@ -1,11 +1,6 @@
-<h1>Show</h1>
-
 <%= @product.name %> -
 <%= @product.description %>
 
-<% @product.pictures.each do |picture| %>
-	<%= picture.image_file_name %>
-	<%= image_tag picture.image.url(:thumb) %>
+<% if current_user %>
+	<%= link_to "Edit", edit_product_path %>
 <% end %>
-
-<%= link_to "Edit", edit_product_path %>
