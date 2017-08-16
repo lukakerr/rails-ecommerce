@@ -11,11 +11,11 @@ class CategoriesController < ApplicationController
 	end
 
 	def new
-		@category = Category.new
+		@category = current_user.categories.build
 	end
 
 	def create
-		@category = Category.new(categories_params)
+		@category = current_user.categories.build(categories_params)
 
 		if @category.save
 			redirect_to @category 
