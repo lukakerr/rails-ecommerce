@@ -1,0 +1,30 @@
+/* Footer */
+
+.footer {
+	margin-top: 200px;
+	height: 200px;
+	background: #3E4348;
+	width: calc(100vw - 40px);
+	padding: 20px;
+	color: #AAA;
+	display: flex;
+}
+
+.footer .column {
+	flex: 1;
+	padding: 5px 20px;
+	font-weight: 300;
+}
+
+.footer .column .col-header {
+	font-weight: 900;
+	display: block;
+	margin: 25px 0;
+}
+
+.footer .column a {
+	display: block;
+	margin: 20px 5px;	
+	font-size: 14px;
+	font-weight: 400;
+}

@@ -3,9 +3,11 @@
   <head>
     <title>Ecommerce</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
 
   <body>
@@ -13,6 +15,33 @@
     <p class="alert"><%= alert %></p>
 
     <div class="wrapper">
+
+      <div class="mob-menu">Barefoot Gypsy</div>
+      <div class="mob-nav">
+        <span class="menubutton">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+        <div>
+          <ul>
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.name, products_path(category: category.name) %></li>
+            <% end %>
+            <br><br>
+            <% if user_signed_in? %>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <% if current_user.admin %>
+      
+              <% end %>
+            <% else %>
+              <li><%= link_to "Log In", new_user_session_path %></li>
+              <li><%= link_to "Register", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
       <div class="nav">
         <div class="logo">
           <%= link_to image_tag("/assets/logo.jpg"), root_path %>
@@ -38,8 +67,9 @@
       </div>
 
       <%= yield %>
-      <div class="push"></div>
+
     </div>
+
     <div class="footer">
         <div class="column">
           <span class="col-header">Products</span>

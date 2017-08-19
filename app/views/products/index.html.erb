@@ -6,7 +6,7 @@
 					<%= link_to image_tag(picture.image.url(:thumb)), product %>
 				<% end %>
 				<span>Purchase</span>
-				<p id="product-caption"><%= product.name %></p>
+				<p id="product-caption"><%= product.name %> - <%= product.price %></p>
 			</div>
 		<% end %>
 	</div>

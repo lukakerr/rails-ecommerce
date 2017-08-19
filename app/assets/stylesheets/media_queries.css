@@ -1,0 +1,33 @@
+/* Media Queries */
+
+@media only screen and (max-width: 695px) {
+  .product {
+		display: flex;
+	  flex-wrap: wrap;
+	  flex-direction: column-reverse;
+	}
+
+	.image-gallery, .product-details {
+	  padding: 15px 5% ;
+	}
+
+	.footer {
+		text-align: center;
+		-webkit-flex-direction: column;
+	  flex-direction: column;
+	  height: 630px;
+	}
+
+	.mob-menu {
+		display: block !important;
+	}
+
+	.mob-nav {
+		margin-bottom: 50px !important;
+		display: table !important;
+	}
+
+	.logo, .nav {
+		display: none;
+	}
+}
