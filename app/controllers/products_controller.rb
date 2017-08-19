@@ -21,13 +21,13 @@ class ProductsController < ApplicationController
 
 	def create
 		@product = current_user.products.build(products_params)
-
+		
 		respond_to do |format|
 			if @product.save
 
 				if params[:images]
 					params[:images].each { |image|
-						@product.pictures.create(image: image)
+						@product.pictures.create(image: image, imageable_id: @product.id)
 					}
 				end
 

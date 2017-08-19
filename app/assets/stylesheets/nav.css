@@ -133,14 +133,8 @@
 	margin-bottom: 100px;
 }
 
-.nav .nav-links {
-	text-align: center;
-	margin-top: 60px;
-}
-
 .nav .nav-links a {
 	margin: 0 1.1em;
-	font-size: 18px;
 }
 
 .logo {
@@ -156,4 +150,102 @@
 .divider {
 	color: #555;
 	margin: 0 20px;
+}
+
+.nav-links {
+	text-align: center;
+	margin-top: 60px;
+  display: block;
+  border: 1px solid #eaeaea;
+  height: 40px;
+  background-color: #f9f9f9;
+  z-index: 9;
+}
+
+.nav-links ul, .nav-links li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  z-index: 9;
+}
+
+.nav-links li {
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.nav-links > li {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  width: 170px;
+}
+
+.nav-links a {
+  color: #444;
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  line-height: 39px;
+}
+
+.nav-links > li > a {
+  padding: 0 33px;
+}
+
+.nav-links > li:hover {
+  background-color: #f1f1f1;
+}
+
+.nav-links > li:hover > a {
+	color: #000;
+}
+
+.nav-links > li:hover .dropdown-content {
+  background-color: #f1f1f1;
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #EEE;
+  width: 169px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  border-right: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  border-left: 1px solid #eaeaea;
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content > li {
+  display: block;
+  -moz-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content li a {
+	font-size: 14px;
+}
+
+.dropdown-content > li:hover {
+  background-color: #e9e9e9;
+}
+
+.dropdown-content > li:hover a {
+	color: #000;
+}
+
+.right-link {
+	position: absolute !important;
+	right: 20px;
+	height: 40px !important;
 }

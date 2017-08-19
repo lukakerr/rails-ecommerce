@@ -46,23 +46,33 @@
         <div class="logo">
           <%= link_to image_tag("/assets/logo.jpg"), root_path %>
         </div>
-
         <div class="nav-links">
-          <% Category.all.each do |category| %>
-            <%= link_to category.name, products_path(category: category.name) %>
-          <% end %>
-
-          <span class="divider">|</span>
+          <li><%= link_to "Home", root_path %></li>
+          <li><a href="#">Products</a>
+            <ul class="dropdown-content">
+              <% Category.all.each do |category| %>
+                <li><%= link_to category.name, products_path(category: category.name) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">About</a></li>
 
           <% if user_signed_in? %>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-            <% if current_user.admin %>
-    
-            <% end %>
+            <li class="right-link"><a href="#">Account</a>
+              <ul class="dropdown-content">
+                <% if current_user.admin %>
+                  <li><%= link_to "Add Product", new_product_path %></li>
+                  <li><%= link_to "Categories", categories_path %></li>
+                  
+                <% end %>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
           <% else %>
-            <%= link_to "Log In", new_user_session_path %>
-            <%= link_to "Register", new_user_registration_path %>
+            <li class="right-link"><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
+
         </div>
       </div>
 

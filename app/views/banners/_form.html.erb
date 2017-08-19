@@ -1,0 +1,7 @@
+<div class="center">
+  <%= simple_form_for([@banner], :html => { :multipart => true }) do |f| %>
+   	<%= f.input :name %>
+    <%= file_field_tag "images[]", type: :file, multiple: true %>
+    <%= f.submit "Add Banner" %>
+  <% end %>
+</div>

@@ -2,7 +2,7 @@ class Product < ApplicationRecord
 	belongs_to :category
 	belongs_to :user
 	belongs_to :order, :optional => true
-	has_many :pictures, dependent: :destroy
+	has_many :pictures, as: :imageable, dependent: :delete_all
 
 	validates :name, presence: true, length: { in: 5..200 }
 	validates :description, presence: true, length: { in: 10..400 }

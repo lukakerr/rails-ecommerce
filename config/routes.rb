@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 	resources :products
 	resources :categories
+	resources :banners
 
-	root "products#home"
+	get 'all-banners', to: 'banners#display'
 
-  # devise_for :users, :controllers => { registrations: 'registrations' }
+	root "banners#index"
 
   devise_for :users, 
   	path: "", 

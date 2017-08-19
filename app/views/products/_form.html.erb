@@ -1,6 +1,6 @@
 <div class="center">
-<%= simple_form_for @product, :html => { :multipart => true } do |f| %>
-	<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Category"} %>
+  <%= simple_form_for @product, :html => { :multipart => true } do |f| %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Category"} %>
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :price %>
@@ -12,5 +12,5 @@
     <%= f.label :pictures %>
     <%= file_field_tag "images[]", type: :file, multiple: true, accept:'image/*' %>
     <%= f.submit "Add Product" %>
-<% end %>
+  <% end %>
 </div>

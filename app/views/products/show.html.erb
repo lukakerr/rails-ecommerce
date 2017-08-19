@@ -37,7 +37,7 @@
 </div>
 
 <div class="product-links">
-	<% if current_user %>
+	<% if current_user && current_user.admin? %>
 		<%= link_to "Edit Product", edit_product_path %>
 		<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"} %>
 	<% end %>

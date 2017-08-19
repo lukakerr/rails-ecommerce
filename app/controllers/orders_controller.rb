@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 	before_action :authorize_admin, only: [:index, :edit, :update, :destroy]
 
 	def index
-		@order = Order.all.order("created_ad DESC")
+		@order = Order.all.order("created_at DESC")
 	end
 
 	def show

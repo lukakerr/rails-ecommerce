@@ -1,0 +1,5 @@
+<% @banner.each do |banner| %>
+	<% banner.pictures.each do |picture| %>
+			<%= image_tag picture.image.url(:thumb) %>
+		<% end %>
+<% end %>

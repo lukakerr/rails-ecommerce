@@ -1,7 +1,10 @@
-<h1>Categories Index</h1>
+<div class="center">
+	<h1>Categories</h1>
 
-<% @category.each do |category| %>
-	<h2><%= link_to category.name, category %></h2>
-<% end %>
-
-<%= link_to "New Category", new_category_path %>
+	<% @category.each do |category| %>
+		<h3><%= link_to category.name, edit_category_path(category) %></h3>
+	<% end %>
+	
+	<br>
+	<%= link_to "New Category", new_category_path %>
+</div>
