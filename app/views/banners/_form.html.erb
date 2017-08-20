@@ -1,7 +1,18 @@
 <div class="center">
-  <%= simple_form_for([@banner], :html => { :multipart => true }) do |f| %>
-   	<%= f.input :name %>
-    <%= file_field_tag "images[]", type: :file, multiple: true %>
+  <%= simple_form_for @banner, :html => { :multipart => true } do |f| %>
+   	<%= f.text_field :name %>
+
+   	<% if @banner.pictures.count == 0 %>
+   		<%= file_field_tag "images[]", type: :file, multiple: true %>
+   	<% else %>
+			<%= f.simple_fields_for :pictures do |image| %>
+				<%= image.check_box :_destroy %>
+    		<%= image.label :_destroy, "Remove Image" %>
+				<%= image_tag image.object.image.url(:thumb) %>
+	    	<%= image.file_field :image %>
+	    <% end %>
+   	<% end %>
+   
     <%= f.submit "Add Banner" %>
   <% end %>
 </div>

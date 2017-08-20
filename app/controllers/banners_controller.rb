@@ -40,11 +40,18 @@ class BannersController < ApplicationController
 	end
 
 	def edit
+		@banner = Banner.includes(:pictures).find(params[:id])
 	end
 
 	def update
 		if @banner.update(banners_params)
-			redirect_to root_path 
+			if params[:images]
+				params[:images].each do |image|
+					@banner.pictures.update_attributes(image: image, imageable_id: @banner.id)
+				end
+			end
+
+			redirect_to @banner
 		else
 			render "edit"
 		end
@@ -58,7 +65,7 @@ class BannersController < ApplicationController
 	private
 
 	def banners_params
-		params.require(:banner).permit(:name, :pictures)
+		params.require(:banner).permit(:name, :pictures, pictures_attributes: [:id, :image, :_destroy])
 	end
 
 	def find_banner

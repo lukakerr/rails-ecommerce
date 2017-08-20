@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
 			redirect_to @order
 		else
 			redirect_to "New"
+		end
 	end
 
 	def edit

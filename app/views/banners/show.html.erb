@@ -1,1 +1,5 @@
+<% @banner.pictures.each do |picture| %> 
+	<%= image_tag picture.image.url(:thumb) %>
+<% end %>
+
 <%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"} %>
