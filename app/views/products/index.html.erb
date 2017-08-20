@@ -3,7 +3,7 @@
 		<% @product.each do |product| %>
 			<div class="product-item">
 				<% product.pictures.limit(1).each do |picture| %>
-					<%= link_to image_tag(picture.image.url(:thumb)), product %>
+					<%= link_to image_tag(picture.image.url(:grid)), product %>
 				<% end %>
 				<span>View</span>
 				<p id="product-caption"><%= product.name %> - <%= product.price %></p>

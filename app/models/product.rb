@@ -12,5 +12,13 @@ class Product < ApplicationRecord
 	validates :quantity, presence: true, :inclusion => 1..999
 	validates :category_id, presence: true
 	validates :user_id, presence: true
-	validates :pictures	, :presence => true
+
+	def self.image_styles
+    {
+      original: "1000x", 
+      product: "750x", 
+      grid: "300x300#", 
+      thumb: "100x" 
+    }
+  end
 end

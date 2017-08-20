@@ -78,6 +78,7 @@ $(document).on('turbolinks:load load', function() {
 	}
    
 	$('.image-gallery-links a').click(function() {
+		restartInterval();
 		randomImgNumber = parseInt($(this).attr('href'));
 		randomImg = $('.image-gallery div img:nth-of-type(' + randomImgNumber + ')');
 		randomImgFade();
@@ -111,7 +112,9 @@ $(document).on('turbolinks:load load', function() {
 		$("#next").height($(".slider").height());
 	});
 
-	var interval = setInterval(loopImages, 5000);
+	if (!(numberofImgs == 1)) {
+		var interval = setInterval(loopImages, 5000);
+	}
 
 	$(".banner-image-gallery-links").width(parseInt($(".image-gallery-links > a").length)*34);
 

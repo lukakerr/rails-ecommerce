@@ -2,11 +2,11 @@
    <div>
    	<% @banner.limit(1).each do |banner| %>
 			<% banner.pictures.each do |picture| %>
-				<%= image_tag(picture.image.url(:thumb), :class => "slider banner-slider") %>
+				<%= image_tag(picture.image.url(:original), :class => "slider banner-slider") %>
       <% end %>
       <div id="previous"></div>
       <div id="next" class="next-banner"></div>
-      <div class="image-gallery-links banner-image-gallery-links">
+      <div class="image-gallery-links banner-image-gallery-links <%= banner.pictures.count == 1 ? 'banner-links-hidden' : '' %>">
      		<% banner.pictures.each_with_index do |picture, index| %> 
         	<a href="<%= index + 1 %>"><%= index + 1 %></a>
         <% end %>

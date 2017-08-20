@@ -2,7 +2,7 @@
 	<div class="image-gallery">
      <div>
 				<% @product.pictures.each do |picture| %> 
-					<%= image_tag(picture.image.url(:thumb), :class => "slider") %>
+					<%= image_tag(picture.image.url(:product), :class => "slider") %>
         <% end %>
         <div id="previous"></div>
         <div id="next"></div>
