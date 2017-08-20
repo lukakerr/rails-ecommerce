@@ -40,17 +40,17 @@ class BannersController < ApplicationController
 	end
 
 	def edit
-		@banner = Banner.includes(:pictures).find(params[:id])
 	end
 
 	def update
 		if @banner.update(banners_params)
+			# Check if any new images have been added
 			if params[:images]
 				params[:images].each do |image|
-					@banner.pictures.update_attributes(image: image, imageable_id: @banner.id)
+					# Create the images
+					@banner.pictures.create(image: image, imageable_id: @banner.id)
 				end
 			end
-
 			redirect_to @banner
 		else
 			render "edit"

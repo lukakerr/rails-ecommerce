@@ -1,6 +1,6 @@
 <div class="center">
-	<%= simple_form_for @category, :html => { :multipart => true } do |f| %>
+	<%= simple_form_for @category, :html => { :multipart => true }, validate: true do |f| %>
 	    <%= f.input :name %>
-	    <%= f.submit "Add Category" %>
+	    <%= f.submit %>
 	<% end %>
 </div>

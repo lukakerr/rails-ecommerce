@@ -1,5 +1,16 @@
-<% @banner.each do |banner| %>
-	<% banner.pictures.each do |picture| %>
-			<%= image_tag picture.image.url(:thumb) %>
-		<% end %>
-<% end %>
+<div class="image-gallery banner">
+   <div>
+   	<% @banner.limit(1).each do |banner| %>
+			<% banner.pictures.each do |picture| %>
+				<%= image_tag(picture.image.url(:thumb), :class => "slider banner-slider") %>
+      <% end %>
+      <div id="previous"></div>
+      <div id="next" class="next-banner"></div>
+      <div class="image-gallery-links banner-image-gallery-links">
+     		<% banner.pictures.each_with_index do |picture, index| %> 
+        	<a href="<%= index + 1 %>"><%= index + 1 %></a>
+        <% end %>
+     </div>
+     <% end %>
+   </div>
+</div>

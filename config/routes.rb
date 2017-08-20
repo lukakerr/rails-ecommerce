@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
 	root "banners#index"
 
+	get '/about', to: 'pages#about'
+	get '/contact', to: 'pages#contact'
+
   devise_for :users, 
   	path: "", 
   	controllers: { registrations: 'registrations' }, 

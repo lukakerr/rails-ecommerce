@@ -53,3 +53,8 @@ a:hover {
 	display: table; 
 	margin: 0 auto;
 }
+
+.admin-links a {
+	display: block;
+	margin: 15px 10px;
+}

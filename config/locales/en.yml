@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+  submit:
+    create: 'Create %{model}'
+    update: 'Update %{model}'
+    submit: 'Save %{model}'

@@ -1,1 +1,10 @@
-display
+<div class="center">
+	<h1>Banners</h1>
+
+	<% @banner.each do |banner| %>
+		<h3><%= link_to banner.name, banner, 'data-turbolinks' => false %></h3>
+	<% end %>
+	
+	<br>
+	<%= link_to "New Banner", new_banner_path %>
+</div>

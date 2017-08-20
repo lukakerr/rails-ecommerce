@@ -1,18 +1,33 @@
 <div class="center">
-  <%= simple_form_for @banner, :html => { :multipart => true } do |f| %>
-   	<%= f.text_field :name %>
-
-   	<% if @banner.pictures.count == 0 %>
-   		<%= file_field_tag "images[]", type: :file, multiple: true %>
-   	<% else %>
-			<%= f.simple_fields_for :pictures do |image| %>
-				<%= image.check_box :_destroy %>
-    		<%= image.label :_destroy, "Remove Image" %>
-				<%= image_tag image.object.image.url(:thumb) %>
-	    	<%= image.file_field :image %>
-	    <% end %>
-   	<% end %>
+  <%= simple_form_for @banner, :html => { :multipart => true }, validate: true do |f| %>
+   	<%= f.input :name %>
+		<br>
+		<%= f.label :pictures %>
+		<div class="form-pictures">
+	   	<% if @banner.pictures.count == 0 %>
+	   		<%= file_field_tag "images[]", type: :file, multiple: true, accept:'image/*' %>
+	   	<% else %>
+				<%= f.simple_fields_for :pictures do |image| %>
+					<div class="edit-pictures">
+						<div class="pictures-edit-options">
+							<div class="pictures-checkbox">
+								<%= image.check_box :_destroy %>
+				    		<%= image.label :_destroy, "Remove Image" %>
+				    	</div>
+							<%= image.label :image, "Replace Image" %>
+							<br>
+				    	<%= image.file_field :image, accept:'image/*' %>
+				    </div>
+				    <%= image_tag image.object.image.url(:thumb) %>
+			    	<hr>
+			    </div>
+		    <% end %>
+		    <span class="upload-more-images">Upload More Images</span>
+		    <%= file_field_tag "images[]", type: :file, multiple: true, accept:'image/*' %>
+	   	<% end %>
+	   </div>
    
-    <%= f.submit "Add Banner" %>
+    <%= f.submit %>
+
   <% end %>
 </div>

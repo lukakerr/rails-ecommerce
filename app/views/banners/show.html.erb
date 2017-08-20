@@ -1,5 +1,23 @@
-<% @banner.pictures.each do |picture| %> 
-	<%= image_tag picture.image.url(:thumb) %>
-<% end %>
+<div class="center">
+	<h1>Preview</h1>
+</div>
 
-<%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"} %>
+<div class="image-gallery banner banner-show">
+   <div>
+			<% @banner.pictures.each do |picture| %>  
+				<%= image_tag(picture.image.url(:thumb), :class => "slider banner-slider") %>
+      <% end %>
+      <div id="previous"></div>
+      <div id="next" class="next-banner"></div>
+      <div class="image-gallery-links banner-image-gallery-links">
+     		<% @banner.pictures.each_with_index do |picture, index| %> 
+        	<a href="<%= index + 1 %>"><%= index + 1 %></a>
+        <% end %>
+     </div>
+   </div>
+</div>
+
+<div class="admin-links">
+	<%= link_to "Edit banner", edit_banner_path(@banner) %>
+	<%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"} %>
+</div>

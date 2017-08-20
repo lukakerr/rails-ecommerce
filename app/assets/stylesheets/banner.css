@@ -1,0 +1,38 @@
+.image-gallery.banner {
+	width: 100%;
+	margin-top: -129px;
+	height: 600px;
+}
+
+.image-gallery.banner-show {
+	width: 100%;
+	margin-top: 0;
+}
+
+.banner-slider {
+	width: 100% !important;
+	max-width: 100% !important;
+	object-fit: cover;
+	height: 600px;
+}
+
+.banner-image-gallery-links {
+	position: absolute;
+	top: 550px;
+	left: 0; 
+  right: 0; 
+  margin: auto;
+  height: 40px;
+  cursor: default;
+}
+
+.banner-image-gallery-links a {
+	background: #fff;
+	opacity: 0.5;
+	color: #fff;
+	border-radius: 50%;
+	height: 11px !important;
+	width: 11px;
+	font-size: 12px !important;
+	margin: 10px 3px 15px 3px !important;
+}

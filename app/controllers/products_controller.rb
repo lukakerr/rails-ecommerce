@@ -45,7 +45,14 @@ class ProductsController < ApplicationController
 
 	def update
 		if @product.update(products_params)
-			redirect_to @product 
+			# Check if any new images have been added
+			if params[:images]
+				params[:images].each do |image|
+					# Create the images
+					@product.pictures.create(image: image, imageable_id: @product.id)
+				end
+			end
+			redirect_to @product
 		else
 			render "edit"
 		end
@@ -59,7 +66,7 @@ class ProductsController < ApplicationController
 	private
 
 	def products_params
-		params.require(:product).permit(:name, :description, :price, :old_price, :on_sale, :quantity, :sold_out, :featured, :category_id, :pictures)
+		params.require(:product).permit(:name, :description, :price, :old_price, :on_sale, :quantity, :sold_out, :featured, :category_id, :pictures, pictures_attributes: [:id, :image, :_destroy])
 	end
 
 	def find_product

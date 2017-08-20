@@ -4,10 +4,13 @@ class Product < ApplicationRecord
 	belongs_to :order, :optional => true
 	has_many :pictures, as: :imageable, dependent: :delete_all
 
+	accepts_nested_attributes_for :pictures, allow_destroy: true
+
 	validates :name, presence: true, length: { in: 5..200 }
 	validates :description, presence: true, length: { in: 10..400 }
 	validates :price, presence: true
-	validates :quantity, presence: true
+	validates :quantity, presence: true, :inclusion => 1..999
 	validates :category_id, presence: true
 	validates :user_id, presence: true
+	validates :pictures	, :presence => true
 end

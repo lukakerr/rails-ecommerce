@@ -1,0 +1,47 @@
+/* Edit Banner */
+
+.form-pictures {
+	margin-top: 20px;
+}
+
+.edit-pictures {
+	margin-bottom: 40px;
+}
+
+.edit-pictures hr {
+	border: 0;
+  height: 1px;
+  background: #DDD;
+}
+
+.edit-pictures input[type="checkbox"] {
+	display: inline;
+	margin: 0;
+}
+
+.edit-pictures input[type="checkbox"] + label {
+	display: block;
+	margin-top: -13px;
+	margin-left: 17px;
+}
+
+.edit-pictures .pictures-edit-options label {
+	font-size: 14px;
+}
+
+.pictures-checkbox {
+	margin-bottom: 10px
+}
+
+.edit-pictures img {
+	display: block;
+	width: 120px;
+	float: right;
+	margin-top: -105px;
+}
+
+.upload-more-images {
+	display: block;
+	font-size: 16px;
+	line-height: 1.5em;
+}
