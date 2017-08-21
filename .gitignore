@@ -12,5 +12,5 @@
 
 /config/secrets_backup.yml
 
-/public/system/users/images
+/public/system
 /public/pictures
