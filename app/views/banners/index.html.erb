@@ -1,3 +1,7 @@
+<% content_for(:body_attributes) do %>
+  data-turbolinks="false"
+<% end %>
+
 <div class="image-gallery banner">
    <div>
    	<% @banner.limit(1).each do |banner| %>

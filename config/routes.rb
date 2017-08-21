@@ -10,8 +10,9 @@ Rails.application.routes.draw do
 	get '/about', to: 'pages#about'
 	get '/contact', to: 'pages#contact'
 
-  devise_for :users, 
+  devise_for :users,
   	path: "", 
   	controllers: { registrations: 'registrations' }, 
-  	path_names: { sign_in: 'login', password: 'forgot', confirmation: 'confirm', unlock: 'unlock', sign_up: 'register', sign_out: 'logout'}
+  	path_names: { sign_in: 'login', password: 'forgot', confirmation: 'confirm', unlock: 'unlock', sign_up: 'register', sign_out: 'logout' }
+
 end

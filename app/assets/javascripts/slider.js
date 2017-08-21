@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load load', function() {
+$(document).on('turbolinks:load load page:change', function() {
 
 	clearInterval(interval);
 
@@ -13,22 +13,22 @@ $(document).on('turbolinks:load load', function() {
 	var randomImg = $('.image-gallery div img:nth-of-type(' + randomImgNumber + ')');
    
 	function loadImg() {
-		currentImg.fadeTo("slow", 1);
+		currentImg.stop().fadeTo("slow", 1);
 	}
    
 	function nextImgFade() {
-		currentImg.fadeTo("slow", 0);
-		nextImg.fadeTo("slow", 1);
+		currentImg.stop().fadeTo("slow", 0);
+		nextImg.stop().fadeTo("slow", 1);
 	}
    
 	function previousImgFade() {
-		currentImg.fadeTo("slow", 0);
-		previousImg.fadeTo("slow", 1);
+		currentImg.stop().fadeTo("slow", 0);
+		previousImg.stop().fadeTo("slow", 1);
 	}
    
 	function randomImgFade() {
-		currentImg.fadeTo("slow", 0);
-		randomImg.fadeTo("slow", 1);
+		currentImg.stop().fadeTo("slow", 0);
+		randomImg.stop().fadeTo("slow", 1);
 	}
    
 	function boldText() {
@@ -104,9 +104,6 @@ $(document).on('turbolinks:load load', function() {
 	boldText();
 	loadImg();
 
-	$("#previous").height($(".slider").height());
-	$("#next").height($(".slider").height());
-
 	$(window).on('resize load', function() {
 		$("#previous").height($(".slider").height());
 		$("#next").height($(".slider").height());
@@ -116,6 +113,6 @@ $(document).on('turbolinks:load load', function() {
 		var interval = setInterval(loopImages, 5000);
 	}
 
-	$(".banner-image-gallery-links").width(parseInt($(".image-gallery-links > a").length)*34);
+	$(".banner-image-gallery-links").width(parseInt(numberofImgs)*34);
 
 });

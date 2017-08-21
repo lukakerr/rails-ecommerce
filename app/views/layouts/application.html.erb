@@ -10,11 +10,15 @@
 
   </head>
 
-  <body>
+  <body <% if content_for?(:body_attributes) %>
+      <%= yield(:body_attributes) %> 
+    <% end %>>
+    
   	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
     <div class="wrapper">
+      <div class="top-banner"></div>
 
       <div class="mob-menu">Barefoot Gypsy</div>
       <div class="mob-nav">
@@ -44,7 +48,7 @@
 
       <div class="nav">
         <div class="logo">
-          <%= link_to image_tag("/assets/logo.jpg"), root_path %>
+          <%= link_to image_tag("/assets/logo.jpg"), root_path, 'data-turbolinks' => false %>
         </div>
         <div class="nav-links">
           <li><%= link_to "Home", root_path, 'data-turbolinks' => false %></li>
@@ -62,6 +66,7 @@
           <% if user_signed_in? %>
             <li class="right-link"><a href="#">Account</a>
               <ul class="dropdown-content">
+                <li><%= link_to "My Account", edit_user_registration_path %></li>
                 <% if current_user.admin %>
                   <li><%= link_to "Add Product", new_product_path %></li>
                   <li><%= link_to "Categories", categories_path %></li>

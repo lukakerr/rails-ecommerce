@@ -16,6 +16,10 @@
 	height: 600px;
 }
 
+#previous, #next {
+	height: 600px;
+}
+
 .banner-image-gallery-links {
 	position: absolute;
 	top: 550px;
@@ -40,3 +44,4 @@
 .banner-links-hidden {
 	display: none;
 }
+

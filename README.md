@@ -1,24 +1,31 @@
-# README
+## Rails Ecommerce Site
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Setup
 
-Things you may want to cover:
+Setup the database with rake db:setup. This will seed the database with placeholder values including a test account.
 
-* Ruby version
+Go to db/seeds.rb for the user account details.
 
-* System dependencies
+### Features
 
-* Configuration
+- Users are able to create/edit/delete accounts
+- Admin users can create/edit/delete products, categories, banners, pictures
+- Admin users can view orders, users
+- Users can add products to the cart or go straight to checkout
+- Products can be on sale, featured, sold out
 
-* Database creation
+### Models
 
-* Database initialization
+- User
+- Order 
+- Product 
+- Picture 
+- Category 
+- Banner
 
-* How to run the test suite
+### Gems
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Devise for users
+- Client-side-validations for real time inline validations from the model
+- Paperclip for image uploads
+- Simple form for forms

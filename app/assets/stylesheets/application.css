@@ -35,6 +35,17 @@ a:hover {
 	min-height: calc(100vh - 200px);
 }
 
+.top-banner:before {
+	display: block;
+  width: 100%;
+  height: .1875rem;
+  /*background-image: -webkit-linear-gradient(left,#73D2F6,#08C 22%,#7FC400 36%,#FFD583 48%,#FFB21E 63%,#FF4D4D 76%,#503873);
+  background-image: linear-gradient(to right,#73D2F6,#08C 22%,#7FC400 36%,#FFD583 48%,#FFB21E 63%,#FF4D4D 76%,#503873);*/
+  background-image: -webkit-linear-gradient(left, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
+  background-image: linear-gradient(to right, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
+  content: '';
+}
+
 .notice, .alert {
 	position: absolute;
 	top: 0;
