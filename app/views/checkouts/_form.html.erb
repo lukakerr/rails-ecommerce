@@ -1,12 +1,14 @@
 <div class="center">
-  <%= simple_form_for @checkout, :html => { :multipart => true }, validate: true do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :address %>
-  <%= f.input :suburb %>
-  <%= f.input :zip %>
-  <%= f.input :state %>
-  <%= f.input :phone %>
+  <%= simple_form_for @checkout, :html => { :multipart => true }, wrapper: :disabled_form, validate: true do |f| %>
+  <%= f.input :first_name, input_html: {value: current_user ? current_user.first_name : ""}  %>
+  <%= f.input :last_name, input_html: {value: current_user ? current_user.last_name : ""} %>
+  <%= f.input :email, input_html: {value: current_user ? current_user.email : "" } %>
+  <br>
+  <%= f.input :address, input_html: {value: current_user ? current_user.address : "" } %>
+  <%= f.input :suburb, input_html: {value: current_user ? current_user.suburb : "" } %>
+  <%= f.input :zip, input_html: {value: current_user ? current_user.zip : "" } %>
+  <%= f.input :state, input_html: {value: current_user ? current_user.state : "" } %>
+  <%= f.input :phone, input_html: {value: current_user ? current_user.phone : "" } %>
 
   <%= hidden_field_tag(:order_id, @order.id) %>
 

@@ -2,4 +2,7 @@
   <h1>Checkout Show</h1>
   
   <%= @checkout.id %>
+  <% @products.each do |product| %>
+    <%= product.name %>
+  <% end %>
 </div>

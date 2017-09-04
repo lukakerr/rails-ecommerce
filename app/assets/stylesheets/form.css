@@ -53,6 +53,10 @@ input[type='submit']:hover, button:hover {
 	transition: all 0.3s;
 }
 
+input[readonly='readonly'] {
+	cursor: not-allowed;
+}
+
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	margin: 0;
 	-webkit-appearance: none;
