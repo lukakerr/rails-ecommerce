@@ -13,10 +13,7 @@ class ApplicationController < ActionController::Base
       if current_user.orders.exists?(:user_id => current_user.id)
         Order.where(user_id: current_user.id).last
       else
-        Order.new(user_id: current_user.id, phone: current_user.phone, state: current_user.state, 
-          zip: current_user.zip, suburb: current_user.suburb, address: current_user.address, 
-          email: current_user.email, last_name: current_user.last_name, first_name: current_user.first_name
-        )
+        Order.new(user_id: current_user.id)
       end
     elsif !session[:order_id].nil?
       Order.find(session[:order_id])

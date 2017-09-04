@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
 	before_action :find_order, only: [:new, :show, :edit]
 	before_filter :authorize, only: [:index, :show]
 	before_action :authorize_admin, only: [:index, :edit]
-	# before_action :authorize_order_user, only: [:new, :show, :edit]
 
 	def index
 		@order = Order.all.order("created_at DESC")
@@ -37,17 +36,16 @@ class OrdersController < ApplicationController
 	end
 
 	def find_order
-		@order = current_order
+		if current_user
+			@order = current_user.orders.find(params[:order_id])
+		elsif !session[:order_id].nil?
+			@order = Order.find(session[:order_id])
+		else
+			redirect_to root_path
+		end
+
 		rescue ActiveRecord::RecordNotFound
     	redirect_to root_url
 	end
-
-	# def authorize_order_user
-	# 	if current_user != Order.find(params[:id]).user
-	#     redirect_to root_path
-	#   else
-	#   	@order = Order.find(params[:id])
-	# 	end
-	# end
 
 end
