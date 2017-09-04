@@ -1,17 +1,21 @@
 class OrdersController < ApplicationController
 
-	before_action :find_order, only: [:show, :edit, :update, :destroy]
+	before_action :find_order, only: [:new, :show, :edit, :update, :destroy]
+	before_filter :authorize, only: [:index, :show]
 	before_action :authorize_admin, only: [:index, :edit, :update, :destroy]
 
 	def index
 		@order = Order.all.order("created_at DESC")
 	end
 
+	def display
+		@order = Order.all.order("created_at ASC")
+	end
+
 	def show
 	end
 
 	def new
-		@order = current_user.orders.build
 	end
 
 	def create
@@ -20,24 +24,8 @@ class OrdersController < ApplicationController
 		if @order.save
 			redirect_to @order
 		else
-			redirect_to "New"
+			redirect_to "new"
 		end
-	end
-
-	def edit
-	end
-
-	def update
-		if @order.update(orders_params)
-			redirect_to @order 
-		else
-			render "Edit"
-		end
-	end
-
-	def destroy
-		@order.destroy
-		redirect_to root_path
 	end
 
 	private
@@ -47,6 +35,6 @@ class OrdersController < ApplicationController
 	end
 
 	def find_order
-		@order = Order.find(params[:id])
+		@order = Order.find_by_id(params[:order_id])
 	end
 end

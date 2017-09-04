@@ -51,6 +51,7 @@
           <%= link_to image_tag("/assets/logo.jpg"), root_path, 'data-turbolinks' => false %>
         </div>
         <div class="nav-links">
+          <li class="left-link cart-text"><%= render 'layouts/cart_text' %></li>
           <li><%= link_to "Home", root_path, 'data-turbolinks' => false %></li>
           <li><a href="javascript:void(0)">Products</a>
             <ul class="dropdown-content">

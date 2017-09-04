@@ -83,6 +83,7 @@ span.error {
 div.error_notification {
 	margin: 30px 0;
 	font-size: 18px;
+	color: red;
 }
 
 .devise-links {

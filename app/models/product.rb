@@ -1,8 +1,11 @@
 class Product < ApplicationRecord
 	belongs_to :category
 	belongs_to :user
-	belongs_to :order, :optional => true
+	# belongs_to :order, :optional => true
 	has_many :pictures, as: :imageable, dependent: :delete_all
+  has_many :order_items
+
+  default_scope { where(sold_out: false) }
 
 	accepts_nested_attributes_for :pictures, allow_destroy: true
 

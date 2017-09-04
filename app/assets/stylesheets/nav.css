@@ -249,3 +249,10 @@
 	right: 20px;
 	height: 40px !important;
 }
+
+.left-link {
+  position: absolute !important;
+  left: 0;
+  width: 180px !important;
+  height: 40px !important;
+}

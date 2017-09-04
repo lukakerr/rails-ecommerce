@@ -1,8 +1,12 @@
 class Order < ApplicationRecord
 	belongs_to :user
-	has_many :products
+	belongs_to :order_status
+  has_many :order_items
 
-	validates :total, presence: true
+  before_create :set_order_status
+  before_save :update_subtotal
+
+	validates :total, presence: true, if: :checking_out?
 	validates :tax, presence: true
 	validates :gst, presence: true
 	validates :first_name, presence: true, length: { in: 5..100 }
@@ -17,4 +21,21 @@ class Order < ApplicationRecord
 	validates :product_name, presence: true
 	validates :product_id, presence: true
 	validates :user_id, presence: true
+
+	def subtotal
+    order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
+  end
+
+  def checking_out
+  end
+
+  private
+
+	def set_order_status
+    self.order_status_id = 1
+  end
+
+  def update_subtotal
+    self[:subtotal] = subtotal
+  end
 end

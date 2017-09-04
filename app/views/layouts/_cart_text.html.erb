@@ -1,0 +1,4 @@
+<%= link_to cart_path, :class => 'cart-link' do %>
+  <%= image_tag "cart.png" %>
+  <%= current_order.order_items.size %>
+<% end %>

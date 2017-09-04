@@ -1,0 +1,32 @@
+/* Edit User */
+
+.user-image {
+	display: inline-block;
+}
+
+.user-image img {
+	border-radius: 50%;
+	width: 75px;
+	height: 75px;
+	margin: 10px 0;
+}
+
+.user-details {
+	display: inline-block;
+	position: relative;
+	top: -37.5px;
+	margin-left: 30px;
+	font-weight: 600;
+}
+
+.form-inputs hr {
+	border: 0;
+  height: 1px;
+  background: #DDD;
+  margin: 30px 5%;
+  width: 90%;
+}
+
+.user_password_confirmation {
+  display: none;
+}
