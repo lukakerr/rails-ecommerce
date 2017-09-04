@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   resources :orders, except: [:edit, :update, :destroy]
+  resources :checkouts, except: [:edit, :update, :destroy]
 
 	get 'all-banners', to: 'banners#display'
 

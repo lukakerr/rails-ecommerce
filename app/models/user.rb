@@ -8,6 +8,7 @@ class User < ApplicationRecord
 	has_many :categories
 	has_many :orders
 	has_many :banners
+  has_many :checkouts
 
 	has_attached_file :image, 
 		styles: { 
