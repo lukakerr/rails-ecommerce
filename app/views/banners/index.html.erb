@@ -18,3 +18,15 @@
      <% end %>
    </div>
 </div>
+
+<div class="home-categories">
+  <h1>Product Categories</h1>
+  <div class="grid">
+    <% Category.all.each do |category| %>
+      <div class="grid-item">
+        <%= link_to image_tag(category.image.url), products_path(category: category.name) %>
+        <span class="grid-caption"><%= category.name %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

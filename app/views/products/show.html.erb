@@ -31,9 +31,11 @@
 	
 		<%= form_for @order_item, remote: true do |f| %>
       <div>
-        Quantity: <%= f.number_field :quantity, value: 1, min: 1 %>
+        <p>Quantity:</p>
+        <%= f.select :quantity, (1..@product.quantity), {}, value: @product.quantity.to_i %>
         <div>
           <%= f.hidden_field :product_id, value: @product.id %>
+          <br>
           <%= f.submit "Add to Cart" %>
         </div>
       </div>

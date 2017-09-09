@@ -1,4 +1,5 @@
 <div class="cart-row">
+  <%= link_to image_tag("remove.png", class: "remove-item", title: "Remove item"), order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true } %>
   <div class="content">
     <div class="product-image">
       <% product.pictures.limit(1).each do |picture| %>
@@ -13,10 +14,8 @@
 
     <div class="form">
       <%= form_for order_item, remote: true do |f| %>
-        
-        <!-- <h3 class="remove-from-cart"><%= link_to "Remove From Cart", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true } %></h3> -->
-
         <div class="right">
+
           <%= f.select :quantity, (1..product.quantity), {}, value: order_item.quantity.to_i, class: "quantity-input" %>
           <div class="order-item-total">
             <%= number_to_currency order_item.total_price %>

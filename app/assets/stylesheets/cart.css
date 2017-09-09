@@ -40,6 +40,13 @@
   left: 20px;
 }
 
+.cart-row .remove-item {
+  width: 20px;
+  position: absolute;
+  margin-top: 10px;
+  right: 10%;
+}
+
 .cart-row .content .cart-product-details p {
   font-size: 14px;
   color: #888;

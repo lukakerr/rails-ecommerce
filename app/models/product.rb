@@ -9,7 +9,7 @@ class Product < ApplicationRecord
 
 	accepts_nested_attributes_for :pictures, allow_destroy: true
 
-	validates :name, presence: true, length: { in: 5..200 }
+	validates :name, presence: true, length: { in: 2..25 }
 	validates :description, presence: true, length: { in: 10..400 }
 	validates :price, presence: true
 	validates :quantity, presence: true, :inclusion => 1..999

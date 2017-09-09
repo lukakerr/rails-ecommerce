@@ -1,10 +1,17 @@
 /* Media Queries */
 
+/* Nav */
+@media only screen and (max-width: 1130px) {
+	
+}
+
+/* Mob Nav */
 @media only screen and (max-width: 695px) {
   .product {
 		display: flex;
 	  flex-wrap: wrap;
 	  flex-direction: column-reverse;
+	  margin: 0 20px;
 	}
 
 	.image-gallery, .product-details {
@@ -12,7 +19,6 @@
 	}
 
 	.footer {
-		text-align: center;
 		-webkit-flex-direction: column;
 	  flex-direction: column;
 	  height: 630px;
@@ -44,6 +50,7 @@
 		display: block !important;
 		margin-top: -45px !important;
 		margin-left: 90px !important;
+		margin-right: 100px;
 	}
 
 	.cart-row .cart-product-details h3 {
@@ -64,6 +71,15 @@
 	.cart-row .form .right .update-quantity {
 		display: block;
 		margin-top: 20px;
-		margin-left: 0;
+		margin-left: 5px;
+	}
+
+	.cart-row .form .right .quantity-input {
+		margin-left: 10px;
+	}
+
+	.cart-row .remove-item {
+	  width: 30px;
+	  margin-top: 50px;
 	}
 }

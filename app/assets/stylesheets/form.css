@@ -68,9 +68,9 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 select {
-	margin: 20px 0;
 	font-size: 14px;
-	width: 410px;
+	width: 100%;
+	max-width: 60px;
 }
 
 abbr[title="required"] {

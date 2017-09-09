@@ -1,6 +1,7 @@
 <div class="center">
 	<%= simple_form_for @category, :html => { :multipart => true }, validate: true do |f| %>
 	    <%= f.input :name %>
+      <%= f.input :image, as: :file %>
 	    <%= f.submit %>
 	<% end %>
 </div>
