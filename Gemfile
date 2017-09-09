@@ -20,6 +20,7 @@ gem 'devise'
 gem "paperclip", "~> 5.0.0"
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platform: :mri

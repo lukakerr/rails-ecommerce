@@ -11,7 +11,7 @@ input:not([type='submit']):not([type='file']):not([type='checkbox']) , textarea 
 	position: relative;
 	top: -15px;
 	vertical-align: middle;
-	width: 400px;
+	width: 100%;
 	transition: .3s;
 }
 
@@ -35,7 +35,7 @@ input[type='checkbox'] {
 	margin: 0 10px 20px 0;
 }
 
-input[type='submit'], button {
+input[type='submit'], button, .button {
 	background-color: #0EAFC1;
 	border: 0;
 	border-radius: 5px;
@@ -43,14 +43,15 @@ input[type='submit'], button {
 	cursor: pointer;
 	font-size: 16px;
 	margin: 20px 0;
-	padding: 12px 20px 12px 20px;
+	padding: 10px 20px;
 	display: block;
 	transition: all 0.3s;
 }
 
-input[type='submit']:hover, button:hover {
+input[type='submit']:hover, button:hover, .button:hover {
 	opacity: 0.8;
 	transition: all 0.3s;
+	color: white;
 }
 
 input[readonly='readonly'] {
@@ -60,6 +61,10 @@ input[readonly='readonly'] {
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	margin: 0;
 	-webkit-appearance: none;
+}
+
+.button {
+	display: inline-block;
 }
 
 select {

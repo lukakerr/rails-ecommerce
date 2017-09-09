@@ -1,0 +1,22 @@
+/*.checkout-shipping, .checkout-billing {
+  display: none;
+}*/
+
+.checkout-personal-header, .checkout-shipping-header, .checkout-billing-header {
+  display: block;
+  height: 60px;
+  width: 100%;
+  background: #DDD;
+  margin: 20px 0;
+}
+
+.checkout-personal-header p, .checkout-shipping-header p, .checkout-billing-header p {
+  text-align: center;
+  color: #444;
+  line-height: 60px;
+}
+
+.next-button {
+  font-size: 14px;
+  padding: 10px 15px;
+}

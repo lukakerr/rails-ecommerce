@@ -1,25 +1,32 @@
-<div>
-  <div>
-    <h4><%= product.name %></h4>
-  </div>
-  <div>
+<div class="cart-row">
+  <div class="content">
+    <div class="product-image">
+      <% product.pictures.limit(1).each do |picture| %>
+        <%= link_to image_tag(picture.image.url(:grid)), product, 'data-turbolinks' => false %>
+      <% end %>
+    </div>
+  
+    <div class="cart-product-details">
+      <h3><%= product.name %></h3>
+      <p><%= order_item.quantity %> x <%= number_to_currency order_item.unit_price %></p>
+    </div>
 
-    <%= form_for order_item, remote: true do |f| %>
-      <h4>Unit Price: <%= number_to_currency order_item.unit_price %></h4>
-      <div>
-        <div>
-          <%= f.number_field :quantity, value: order_item.quantity.to_i, min: 1 %>
+    <div class="form">
+      <%= form_for order_item, remote: true do |f| %>
+        
+        <!-- <h3 class="remove-from-cart"><%= link_to "Remove From Cart", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true } %></h3> -->
+
+        <div class="right">
+          <%= f.select :quantity, (1..product.quantity), {}, value: order_item.quantity.to_i, class: "quantity-input" %>
+          <div class="order-item-total">
+            <%= number_to_currency order_item.total_price %>
+          </div>
           <%= f.hidden_field :product_id, value: product.id %>
-        </div>
-        <div>
-          <div>
-            <%= f.submit "Update Quantity" %>
-            <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true } %>
+          <div class="update-quantity">
+            <%= f.submit "Update quantity", class: "text-sm" %>
           </div>
         </div>
-      </div>
-      <h4>Total Price: <%= number_to_currency order_item.total_price %></h4>
-    <% end %>
-    <hr>
+      <% end %>
+    </div>
   </div>
 </div>

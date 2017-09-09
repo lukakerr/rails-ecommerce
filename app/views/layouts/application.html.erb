@@ -34,16 +34,19 @@
             <% end %>
             <br><br>
             <% if user_signed_in? %>
-              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
               <% if current_user.admin %>
-      
+                <li><%= link_to "Add Product", new_product_path %></li>
+                <li><%= link_to "Categories", categories_path %></li>
+                <li><%= link_to "Banners", all_banners_path %></li>
+                <li><%= link_to "Orders", checkouts_path %></li>
               <% end %>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Log In", new_user_session_path %></li>
-              <li><%= link_to "Register", new_user_registration_path %></li>
             <% end %>
           </ul>
         </div>
+        <span class="cart-text-mobile"><%= render 'layouts/cart_text' %></span>
       </div>
 
       <div class="nav">
@@ -51,37 +54,32 @@
           <%= link_to image_tag("/assets/logo.jpg"), root_path, 'data-turbolinks' => false %>
         </div>
         <div class="nav-links">
-          <li class="left-link cart-text"><%= render 'layouts/cart_text' %></li>
-          <li><%= link_to "Home", root_path, 'data-turbolinks' => false %></li>
-          <li><a href="javascript:void(0)">Products</a>
-            <ul class="dropdown-content">
-              <% Category.all.each do |category| %>
-                <li><%= link_to category.name, products_path(category: category.name) %></li>
-              <% end %>
-              <li><%= link_to "All Products", products_path %></li>
-            </ul>
-          </li>
+          <% Category.all.each do |category| %>
+            <li><%= link_to category.name, products_path(category: category.name) %></li>
+          <% end %>
+          <li><%= link_to "All", products_path %></li>
+          <span class="word-divider">|</span>
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
 
           <% if user_signed_in? %>
-            <li class="right-link"><a href="#">Account</a>
+            <li class="account-link"><a href="javascript:void(0)">Account</a>
               <ul class="dropdown-content">
                 <li><%= link_to "My Account", edit_user_registration_path %></li>
                 <% if current_user.admin %>
                   <li><%= link_to "Add Product", new_product_path %></li>
                   <li><%= link_to "Categories", categories_path %></li>
                   <li><%= link_to "Banners", all_banners_path %></li>
-                  
+                  <li><%= link_to "Orders", checkouts_path %></li>
                 <% end %>
                 <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
           <% else %>
-            <li class="right-link"><%= link_to "Log In", new_user_session_path %></li>
+            <li class="account-link"><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
-
         </div>
+        <span class="cart-text"><%= render 'layouts/cart_text' %></span>
       </div>
 
       <%= yield %>
@@ -103,9 +101,8 @@
         </div>
         <div class="column">
           <span class="col-header">Info</span>
-          <% Category.all.each do |category| %>
-            <%= link_to category.name, products_path(category: category.name) %>
-          <% end %>
+          <%= link_to "About", about_path %>
+          <%= link_to "Contact", contact_path %>
         </div>
       </div>
     

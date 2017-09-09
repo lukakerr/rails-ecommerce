@@ -1,6 +1,6 @@
 <%= link_to cart_path, :class => 'cart-link' do %>
   <%= image_tag "cart.png" %>
   <% if current_order %>
-    <%= current_order.order_items.size %>
+    <%= current_order.order_items.size > 0 ? current_order.order_items.size : "" %>
   <% end %>
 <% end %>

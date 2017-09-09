@@ -1,7 +1,11 @@
 .image-gallery.banner {
 	width: 100%;
-	margin-top: -129px;
+	margin-top: -50px;
 	height: 600px;
+}
+
+.image-gallery.banner {
+  padding: 15px 0;
 }
 
 .image-gallery.banner-show {

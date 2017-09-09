@@ -9,14 +9,14 @@ $(document).on('turbolinks:load load', function() {
   // Devise edit user password
   $(".edit-password").keyup(function(event) {
     if ($(".edit-password").val().length == 0) {
-      $(".user_password_confirmation").fadeOut('fast');
+      $(".new-password-confirmation").fadeOut('fast');
     } else {
-      $(".user_password_confirmation").fadeIn('fast');
+      $(".new-password-confirmation").fadeIn('fast');
     }
   });
 
-  if ($(".user_password_confirmation").hasClass("field_with_errors")) {
-    $(".user_password_confirmation").show();
+  if ($(".new-password-confirmation").hasClass("field_with_errors")) {
+    $(".new-password-confirmation").show();
   }
 
 });

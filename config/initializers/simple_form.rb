@@ -166,9 +166,4 @@ SimpleForm.setup do |config|
 
   # Defines which i18n scope will be used in Simple Form.
   # config.i18n_scope = 'simple_form'
-
-  # Disabled form
-  config.wrappers :disabled_form do |b|
-    b.use :input, readonly: true
-  end
 end

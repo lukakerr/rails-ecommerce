@@ -13,5 +13,13 @@
 	  </div>
 	<% end %>
 
+	<%- if devise_mapping.omniauthable? %>
+	  <%- resource_class.omniauth_providers.each do |provider| %>
+		  <div class="facebook-login">
+		    <%= link_to "Login with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %>
+		  </div>
+	  <% end -%>
+	<% end -%>
+
 	<%= render "devise/shared/links" %>
 </div>

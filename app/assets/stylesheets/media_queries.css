@@ -30,4 +30,40 @@
 	.logo, .nav {
 		display: none;
 	}
+
+	/* Cart */
+	.cart-row .form {
+		display: block !important;
+	}
+
+	.cart-row .content {
+		height: 245px;
+	}
+
+	.cart-row .cart-product-details {
+		display: block !important;
+		margin-top: -45px !important;
+		margin-left: 90px !important;
+	}
+
+	.cart-row .cart-product-details h3 {
+		margin-bottom: -20px;
+	}
+
+	.cart-row .product-image {
+		top: 50px;
+		position: relative;
+	}
+
+	.cart-row .form .right {
+		top: 30px;
+    position: relative !important;
+    left: 85px;
+	}
+
+	.cart-row .form .right .update-quantity {
+		display: block;
+		margin-top: 20px;
+		margin-left: 0;
+	}
 }

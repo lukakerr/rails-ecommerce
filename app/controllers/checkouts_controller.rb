@@ -10,10 +10,10 @@ class CheckoutsController < ApplicationController
 
   def show
     @order = Order.find_by_id(@checkout.order_id)
-    @order_items = Order.find_by_id(@order.id).order_items
-    @order_items.each do |order_item|
-      @products = Product.where(id: order_item.product_id)
-    end
+      @order_items = Order.find_by_id(@order.id).order_items
+      @order_items.each do |order_item|
+        @products = Product.where(id: order_item.product_id)
+      end
   end
 
   def new
@@ -23,10 +23,7 @@ class CheckoutsController < ApplicationController
   def create
     @checkout = Checkout.new(checkouts_params)
     if @order.present?
-      @order.tax ||= 1
-      @order.gst ||= 1
-      @order.save
-      @checkout.total = @order.subtotal * @order.tax * @order.gst
+      @checkout.set_gst(@order.subtotal, @order.gst)
       @checkout.order_id = @order.id
 
       if current_user
@@ -35,6 +32,7 @@ class CheckoutsController < ApplicationController
 
       if @checkout.save
         session.delete(:order_id)
+        session[:checkout_id] = @checkout.id
         # Creates a new order for the customer when they checkout
         # This saves the old order record, which is referred to by the checkout record
         if current_user
@@ -54,7 +52,8 @@ class CheckoutsController < ApplicationController
   private
 
   def checkouts_params
-    params.require(:checkout).permit(:total, :first_name, :last_name, :email, :address, :suburb, :zip, :state, :phone, :order_id, :user_id)
+    params.require(:checkout).permit(:total, :first_name, :last_name, :email, :shipping_address, :shipping_suburb, :shipping_zip, :shipping_state,
+      :billing_address, :billing_suburb, :billing_zip, :billing_state, :phone, :order_id, :user_id)
   end
 
   def find_order
@@ -62,7 +61,7 @@ class CheckoutsController < ApplicationController
   end
 
   def find_checkout
-    @checkout = Checkout.find(params[:id])
+    @checkout = Checkout.find_by_slug(params[:slug])
   end
 
 end

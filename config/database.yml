@@ -3,6 +3,8 @@ development:
   database: ecommerce_development
   pool: 5
   timeout: 5000
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
 
 test:
   adapter: postgresql
@@ -15,5 +17,5 @@ production:
   database: ecommerce_production
   pool: 5
   timeout: 5000
-  username: ecommerce
+  username: <%= ENV['ECOMMERCE_DATABASE_USERNAME'] %>
   password: <%= ENV['ECOMMERCE_DATABASE_PASSWORD'] %>

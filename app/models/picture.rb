@@ -18,7 +18,7 @@ class Picture < ApplicationRecord
       :grid => "-strip",
       :thumb => "-quality 75 -strip" 
     },
-    default_url: "/images/:style/missing.png"
+    default_url: "/images/missing.png"
 
   validates_attachment :image, 
     presence: true,

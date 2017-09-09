@@ -10,8 +10,19 @@
 <% if @order_items.size == 0 %>
   <p>There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.</p>
 <% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
-  <% end %>
-  <%= link_to "Checkout Now", new_checkout_path(order_id: @order.id) %>
+  <div class="cart">
+    <h2>Shopping Cart</h2>
+    <p>You have <b><%= current_order.order_items.size > 1 ? current_order.order_items.size.to_s + " items" : current_order.order_items.size.to_s + " item" %></b> in your shopping cart</p>
+    
+    <div class="cart-row-border">
+      <% @order_items.each do |order_item| %>
+        <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+      <% end %>
+    </div>
+
+    <div class="cart-finish">
+      <h3 class="cart-total">Total: <%= number_to_currency @order.subtotal %></h3>
+      <%= link_to "Checkout Now", new_checkout_path(order_id: @order.id), class: "button" %>
+    </div>
+  </div>
 <% end %>

@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
 	end
 
 	def new
-
 	end
 
 	def create
@@ -32,7 +31,7 @@ class OrdersController < ApplicationController
 	private
 
 	def orders_params
-		params.require(:order).permit(:total, :tax, :gst, :first_name, :last_name, :email, :address, :suburb, :zip, :state, :phone, :product_name, :product_id, :user_id)
+		params.require(:order).permit(:total, :tax, :gst, :order_status_id, :subtotal)
 	end
 
 	def find_order

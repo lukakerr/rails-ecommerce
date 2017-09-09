@@ -57,7 +57,7 @@
   flex-wrap: wrap;
 }
 
-.image-gallery, .product-details {
+.product .image-gallery, .product-details {
 	flex: 1 320px;
   min-width: 0;
   padding: 15px 2%;
