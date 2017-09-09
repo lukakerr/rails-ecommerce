@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     else
     	@category_id = Category.find_by(name: params[:category]).id
     	@product = Product.where(category_id: @category_id).order("created_at ASC")
+    	@category = Category.find(@category_id)
     end
 	end
 

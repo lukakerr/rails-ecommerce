@@ -1,21 +1,14 @@
 /* Home Page Category Images */
 .home-categories {
   margin-top: 100px;
+}
+
+/* Both Category Pages */
+.categories {
   text-align: center;
 }
 
-.home-categories h1 {
-  margin: 0 auto;
-  width: 300px;
-  border-bottom: 1px solid #888;
-  font-weight: 200;
-  text-transform: lowercase;
-  font-variant: small-caps;
-  margin-bottom: 20px;
-  color: #888;
-}
-
-.home-categories .grid .grid-item span {
+.categories .grid .grid-item span {
   opacity: 0.8;
   background: transparent;
   color: #FFF;
@@ -23,11 +16,11 @@
   font-weight: 200;
 }
 
-.home-categories .grid .grid-item {
+.categories .grid .grid-item {
   transition: all 0.3s;
 }
 
-.home-categories .grid .grid-item:hover {
+.categories .grid .grid-item:hover {
   opacity: 0.5;
   transition: all 0.3s;
 }

@@ -29,14 +29,14 @@
 
 		<hr>
 	
-		<%= form_for @order_item, remote: true do |f| %>
+		<%= form_for @order_item, remote: true, :html => { id: "add-to-cart-form" } do |f| %>
       <div>
         <p>Quantity:</p>
         <%= f.select :quantity, (1..@product.quantity), {}, value: @product.quantity.to_i %>
         <div>
           <%= f.hidden_field :product_id, value: @product.id %>
           <br>
-          <%= f.submit "Add to Cart" %>
+         <%= link_to "Add To Cart", "", :onclick => "$('#add-to-cart-form').submit()", class: "button text-sm" %>
         </div>
       </div>
     <% end %>
@@ -45,9 +45,9 @@
 
 </div>
 
-<div class="product-links">
+<div class="text-center">
 	<% if current_user && current_user.admin? %>
-		<%= link_to "Edit Product", edit_product_path %>
-		<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"} %>
+		<%= link_to "Edit Product", edit_product_path, class: "button" %>
+		<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
 	<% end %>
 </div>

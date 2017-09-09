@@ -1,5 +1,10 @@
 /* Mobile Navigation */
 
+@font-face {
+  font-family: 'Marbre Sans';
+  src: url('MarbreSans.otf');
+}
+
 .mob-menu {
 	display: none;
 	height: 45px;
@@ -10,9 +15,9 @@
 	width: 100%;
 	text-indent: 50px;
 	position: fixed;
-	top: 0px;
+	top: .1875rem;
 	z-index: 9;
-	font-family: Marbre Sans;
+	font-family: 'Marbre Sans';
 	font-size: 20px;
 	padding-top: 10px;
 	cursor: pointer;
@@ -58,6 +63,7 @@
 	position: fixed;
 	width: 100%;
 	margin: 0px;
+  margin-top: .1875rem;
 	height: auto;
 	display: none;
 	left: 0px;
@@ -75,6 +81,7 @@
 }
 
 .menubutton {
+  margin-top: .1875rem;
 	cursor: pointer;
 	display: inline-block;
 	height: 30px;
@@ -134,33 +141,20 @@
   margin: 20px 0;
 }
 
-.nav .nav-links a {
-	margin: 0 1.1em;
-  text-transform: lowercase;
-  font-variant: small-caps;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-
 .logo {
   position: relative;
-	display: inline-block;
-	text-align: left;
+  display: inline-block;
+  text-align: left;
   margin-left: 100px;
   top: 40px;
 }
 
 .logo img {
-	width: 120px;
-}
-
-.word-divider {
-	color: #666;
-	margin: 0 20px;
+  width: 120px;
 }
 
 .nav-links {
-	text-align: left;
+  text-align: left;
   display: inline-block;
   margin-bottom: 80px;
   margin-left: 280px;
@@ -169,10 +163,15 @@
 
 .nav-links > li {
   display: inline-block;
-  height: 100%;
+  height: 50px;
 }
 
 .nav-links a {
+	margin: 0 1.1em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-size: 18px;
+  letter-spacing: 1px;
   color: #888;
   display: block;
   height: 100%;
@@ -190,7 +189,7 @@
   display: none;
   position: absolute;
   padding: 10px 0;
-  margin-top: 0px;
+  margin-top: -30px;
   width: 160px;
   z-index: 99;
   background: #FFF;
@@ -203,6 +202,11 @@
 
 .dropdown-content > li:hover a {
 	color: #000;
+}
+
+.word-divider {
+  color: #666;
+  margin: 0 20px;
 }
 
 .account-link {
@@ -225,9 +229,27 @@
   color: #000;
 }
 
-.cart-text img {
+.cart-text img, .cart-text-mobile img {
   width: 20px;
   position: relative;
   top: 3px;
   right: 5px;
+}
+
+.cart-text-mobile img {
+  width: 25px;
+  top: 4px;
+}
+
+.cart-text-mobile {
+  position: fixed;
+  top: 12px;
+  right: 30px;
+  z-index: 9;
+  font-size: 18px;
+  margin-top: .1875rem;
+}
+
+.cart-text-mobile a:hover {
+  color: #888;
 }

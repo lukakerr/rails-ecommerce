@@ -1,5 +1,9 @@
 /* Forms */
 
+form {
+	min-width: 400px;
+}
+
 input:not([type='submit']):not([type='file']):not([type='checkbox']) , textarea {
 	border: 1px solid #ddd;
 	border-radius: 2px;

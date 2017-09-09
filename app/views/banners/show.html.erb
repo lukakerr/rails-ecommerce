@@ -1,5 +1,5 @@
 <div class="center">
-	<h1>Preview</h1>
+	<h1 class="grid-title">Preview</h1>
 </div>
 
 <div class="image-gallery banner banner-show">
@@ -16,8 +16,8 @@
      </div>
    </div>
 </div>
-
-<div class="admin-links">
-	<%= link_to "Edit banner", edit_banner_path(@banner) %>
-	<%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"} %>
+<br>
+<div class="text-center">
+	<%= link_to "Edit banner", edit_banner_path(@banner), class: "button" %>
+	<%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
 </div>

@@ -105,3 +105,9 @@
 	display: block;
 	line-height: 1.5em;
 }
+
+/* New Product Page */
+
+#new-product-form select {
+	max-width: 100%;
+}

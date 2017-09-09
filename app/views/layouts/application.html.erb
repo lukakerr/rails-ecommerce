@@ -28,6 +28,8 @@
       </span>
       <div>
         <ul>
+          <li><%= link_to "Home", root_path, 'data-turbolinks' => false %></li>
+          <br>
           <% Category.all.each do |category| %>
             <li><%= link_to category.name, products_path(category: category.name) %></li>
           <% end %>
@@ -45,7 +47,7 @@
           <% end %>
         </ul>
       </div>
-      <span class="cart-text-mobile"><%= render 'layouts/cart_text' %></span>
+      <span class="cart-text cart-text-mobile"><%= render 'layouts/cart_text' %></span>
     </div>
 
     <div class="nav">

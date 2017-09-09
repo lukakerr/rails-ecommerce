@@ -1,10 +1,16 @@
-<div class="center">
-	<h1>Categories</h1>
-
-	<% @category.each do |category| %>
-		<h3><%= link_to category.name, edit_category_path(category) %></h3>
-	<% end %>
+<div class="text-center">
+	<div class="categories">
+    <h1 class="grid-title">All Categories</h1>
+    <div class="grid">
+      <% Category.all.each do |category| %>
+        <div class="grid-item">
+          <%= link_to image_tag(category.image.url), products_path(category: category.name) %>
+          <span class="grid-caption"><%= category.name %></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
 	
-	<br>
-	<%= link_to "New Category", new_category_path %>
+	<br><br>
+	<%= link_to "New Category", new_category_path, class: "button" %>
 </div>

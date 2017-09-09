@@ -8,7 +8,7 @@ class Banner < ApplicationRecord
 	def self.image_styles
     {
       original: "1000x",
-      thumb: "100x",
+      thumb: "300",
     }
   end
 end

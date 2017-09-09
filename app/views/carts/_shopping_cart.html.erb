@@ -8,7 +8,10 @@
   </div>
 <% end %>
 <% if @order_items.size == 0 %>
-  <p>There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.</p>
+  <div class="center text-center">
+    <p>There are no items in your shopping cart.</p>  
+    <p>Please <%= link_to "go back", root_path %> and add some items to your cart.</p>
+  </div>
 <% else %>
   <div class="cart">
     <h2>Shopping Cart</h2>

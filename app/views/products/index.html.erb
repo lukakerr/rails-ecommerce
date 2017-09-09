@@ -1,4 +1,5 @@
-<div class="products">
+<div class="products text-center">
+ <h1 class="grid-title full-width"><%= @category ? @category.name : "All Products" %></h1>
 	<div class="grid">
 		<% @product.each do |product| %>
 			<div class="grid-item">

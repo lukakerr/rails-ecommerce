@@ -17,6 +17,7 @@ body, html {
 	line-height: 1;
 	font-family: Helvetica Neue;
 	-webkit-font-smoothing: subpixel-antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	height: 100%;
 }
 
@@ -42,6 +43,7 @@ a:hover {
   background-image: -webkit-linear-gradient(left, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
   background-image: linear-gradient(to right, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
   content: '';
+  z-index: 99;
 }
 
 .notice, .alert {
@@ -80,4 +82,8 @@ a:hover {
 
 .text-lg {
   font-size: 18px !important;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -1,10 +1,16 @@
-<div class="center">
-	<h1>Banners</h1>
+<div class="text-ceter categories">
+  <h1 class="grid-title">Banners</h1>
+  <div class="grid">
+    <% @banner.each do |banner| %>
+      <div class="grid-item">
+        <% banner.pictures.limit(1).each do |picture| %>
+          <%= link_to image_tag(picture.image.url(:thumb)), banner, 'data-turbolinks' => false %>
+        <% end %>
+        <span class="grid-caption"><%= banner.name %></span>
+      </div>
+    <% end %>
+  </div>
 
-	<% @banner.each do |banner| %>
-		<h3><%= link_to banner.name, banner, 'data-turbolinks' => false %></h3>
-	<% end %>
-	
-	<br>
-	<%= link_to "New Banner", new_banner_path %>
+  <br><br>
+  <%= link_to "New Banner", new_banner_path, class: "button" %>
 </div>

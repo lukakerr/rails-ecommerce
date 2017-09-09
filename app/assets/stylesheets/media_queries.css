@@ -7,6 +7,17 @@
 
 /* Mob Nav */
 @media only screen and (max-width: 695px) {
+	/* Form */
+	form {
+		min-width: 100%;
+	}
+
+	.center {
+		width: 90%;
+		margin: 0 5%;
+	}
+	
+	/* Product */
   .product {
 		display: flex;
 	  flex-wrap: wrap;
@@ -24,6 +35,10 @@
 	  height: 630px;
 	}
 
+	.top-banner:before {
+		position: fixed;
+	}
+
 	.mob-menu {
 		display: block !important;
 	}
@@ -35,6 +50,23 @@
 
 	.logo, .nav {
 		display: none;
+	}
+
+	/* Banner */
+	.image-gallery.banner {
+		margin-top: -75px;
+	}
+
+	.image-gallery.banner, .banner-slider, #previous, #next {
+		height: 300px;
+	}
+
+	.banner-image-gallery-links {
+		top: 250px;
+	}
+
+	.banner-show {
+		margin-top: 0 !important;
 	}
 
 	/* Cart */
