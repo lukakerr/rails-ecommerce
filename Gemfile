@@ -21,6 +21,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'omniauth-facebook'
+gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri

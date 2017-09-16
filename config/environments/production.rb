@@ -52,6 +52,19 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  # Don't raise error if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587, 
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttle_auto: true,
+    user_name: ENV.fetch('ECOMMERCE_GMAIL_USERNAME'),
+    password: ENV.fetch('ECOMMERCE_GMAIL_PASSWORD')
+  }
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "ecommerce_#{Rails.env}"

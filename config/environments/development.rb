@@ -26,8 +26,20 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Raise error if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587, 
+    domain: "gmail.com",
+    authentication: "plain",
+    enable_starttle_auto: true,
+    user_name: ENV["ECOMMERCE_GMAIL_USERNAME"],
+    password: ENV["ECOMMERCE_GMAIL_PASSWORD"]
+  }
 
   config.action_mailer.perform_caching = false
 

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable and :omniauthable
+	# :confirmable, :lockable, :timeoutable
 	devise :database_authenticatable, :registerable,
 	:recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   validates :phone, presence: false, length: { in: 10..16 }, format: { with: /\A[\d\s-]+\z/ }, :allow_blank => true 
 
 	validates :shipping_address, :billing_address, presence: false, length: { in: 5..200 }, :allow_blank => true 
-  validates :shipping_suburb, :billing_suburb, presence: false, length: { in: 2..50 }, format: { with: /\A[A-z]+\z/ }, :allow_blank => true 
+  validates :shipping_suburb, :billing_suburb, presence: false, length: { in: 2..50 }, format: { with: /\A[A-Za-z\s]+\z/ }, :allow_blank => true 
   validates :shipping_zip, :billing_zip, presence: false, :allow_blank => true 
   validates_inclusion_of :shipping_zip, :billing_zip, :in => 1000..9999, :allow_blank => true 
   validates :shipping_state, :billing_state, presence: false, length: { in: 2..3 }, :allow_blank => true 

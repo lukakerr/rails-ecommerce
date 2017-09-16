@@ -11,7 +11,7 @@ class Checkout < ApplicationRecord
   validates :phone, presence: true, length: { in: 10..16 }, format: { with: /\A[\d\s-]+\z/ }
 
   validates :shipping_address, :billing_address, presence: true, length: { in: 5..200 }, :allow_blank => true 
-  validates :shipping_suburb, :billing_suburb, presence: true, length: { in: 2..50 }, format: { with: /\A[A-z]+\z/ }, :allow_blank => true 
+  validates :shipping_suburb, :billing_suburb, presence: true, length: { in: 2..50 }, format: { with: /\A[A-Za-z\s]+\z/ }, :allow_blank => true 
   validates :shipping_zip, :billing_zip, presence: true, :allow_blank => true 
   validates_inclusion_of :shipping_zip, :billing_zip, :in => 1000..9999, :allow_blank => true 
   validates :shipping_state, :billing_state, presence: true, length: { in: 2..3 }, :allow_blank => true 

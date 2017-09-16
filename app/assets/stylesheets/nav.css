@@ -214,10 +214,13 @@
   margin-right: 80px;
 }
 
+/* Cart Text And Icon */
+
 .cart-text {
   position: absolute;
   top: 20px;
   right: 100px;
+  transition: all 0.3s;
 }
 
 .cart-text a {
@@ -225,8 +228,9 @@
   color: #888;
 }
 
-.cart-text a:hover {
-  color: #000;
+.cart-text:hover {
+  opacity: 0.6;
+  transition: all 0.3s;
 }
 
 .cart-text img, .cart-text-mobile img {
