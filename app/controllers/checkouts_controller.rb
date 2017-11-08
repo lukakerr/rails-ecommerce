@@ -1,5 +1,4 @@
 class CheckoutsController < ApplicationController
-
   before_action :find_checkout, only: [:show]
   before_action :find_order, only: [:new, :create]
   before_filter :authorize_admin, only: [:index]
@@ -34,14 +33,13 @@ class CheckoutsController < ApplicationController
         session.delete(:order_id)
         session[:checkout_id] = @checkout.id
         # Creates a new order for the customer when they checkout
-        # This saves the old order record, which is referred to by the checkout record
+        # Saves old order record, which is referred to by the checkout record
         if current_user
           order = Order.new(user_id: current_user.id)
-          order.save
         else
           order = Order.new
-          order.save
         end
+        order.save
         redirect_to @checkout
       else
         redirect_to "new"
@@ -63,5 +61,4 @@ class CheckoutsController < ApplicationController
   def find_checkout
     @checkout = Checkout.find_by_slug(params[:slug])
   end
-
 end

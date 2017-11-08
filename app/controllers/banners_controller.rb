@@ -1,5 +1,4 @@
 class BannersController < ApplicationController
-
 	before_action :find_banner, only: [:show, :edit, :update, :destroy]
 	before_filter :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
 
@@ -11,8 +10,7 @@ class BannersController < ApplicationController
 		@banner = Banner.all.order("created_at DESC")
 	end
 
-	def show
-	end
+	def show; end
 
 	def new
 		@banner = current_user.banners.build
@@ -62,7 +60,7 @@ class BannersController < ApplicationController
 		redirect_to root_path
 	end
 
-	private
+		private
 
 	def banners_params
 		params.require(:banner).permit(:name, :pictures, pictures_attributes: [:id, :image, :_destroy])

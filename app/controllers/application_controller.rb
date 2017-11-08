@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def configure_permitted_parameters
-    update_attrs = [:password, :password_confirmation, :current_password]
+    update_attrs = %i[password password_confirmation current_password]
     devise_parameter_sanitizer.permit :account_update, keys: update_attrs
   end
 
@@ -24,13 +24,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-	def authorize
+  def authorize
 		redirect_to root_path if current_user.nil?
-	end
+  end
 
-	def authorize_admin
+  def authorize_admin
 		if (current_user.nil?) || (not current_user.admin)
 			redirect_to root_path
 		end
-	end
+  end
 end

@@ -6,6 +6,10 @@ Setup the database with rake db:setup. This will seed the database with placehol
 
 Go to db/seeds.rb for the user account details.
 
+### Test
+
+Make sure the database is running. Run `bundle exec rspec`.
+
 ### Features
 
 - Users are able to create/edit/delete accounts

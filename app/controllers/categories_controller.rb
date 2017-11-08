@@ -1,10 +1,9 @@
 class CategoriesController < ApplicationController
-
 	before_action :find_category, only: [:edit, :update, :destroy]
 	before_filter :authorize_admin
 
 	def index
-		@category = Category.all.order("created_at ASC")
+		@category = Category.all.order('created_at ASC')
 	end
 
 	def new
@@ -15,20 +14,19 @@ class CategoriesController < ApplicationController
 		@category = current_user.categories.build(categories_params)
 
 		if @category.save
-			redirect_to categories_path 
+			redirect_to categories_path
 		else
-			render "New"
+			render 'New'
 		end
 	end
 
-	def edit
-	end
+	def edit; end
 
 	def update
 		if @category.update(categories_params)
 			redirect_to categories_path
 		else
-			render "Edit"
+			render 'Edit'
 		end
 	end
 
@@ -37,7 +35,7 @@ class CategoriesController < ApplicationController
 		redirect_to categories_path
 	end
 
-	private
+		private
 
 	def categories_params
 		params.require(:category).permit(:name, :image, :user_id)
@@ -46,5 +44,4 @@ class CategoriesController < ApplicationController
 	def find_category
 		@category = Category.find(params[:id])
 	end
-
 end
