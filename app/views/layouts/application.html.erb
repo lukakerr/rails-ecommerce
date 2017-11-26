@@ -50,8 +50,8 @@
         <% Page.order(:position).all.published.each do |page| %>
           <%= link_to page.name, page, alt: page.name, title: page.name %>
         <% end %>
-        <hr>
         <% if user_signed_in? %>
+          <hr>
           <%= link_to "My Account", edit_user_registration_path, alt: "My Account", title: "My Account" %>
           <% if current_user.admin %>
             <%= link_to "Add Product", new_product_path %> 
@@ -60,8 +60,10 @@
             <%= link_to "Banners", all_banners_path %>
             <%= link_to "Orders", checkouts_path %> 
           <% end %>
+          <hr>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, alt: "Log Out", title: "Log Out" %>
         <% else %>
+          <hr>
           <%= link_to "Log In", new_user_session_path, alt: "Log In", title: "Log In" %>
         <% end %>
          <span class="cart-text cart-text-mobile"><%= render 'layouts/cart_text' %></span> 
@@ -79,14 +81,17 @@
         <%= link_to image_tag("/assets/logo.png"), root_path, 'data-turbolinks' => false, alt: "Home", title: "Home" %>
       </div>
       <div class="nav-links">
-        <% Category.all.each do |category| %>
-           <li><%= link_to category.name, products_path(category: category.name) %></li> 
-        <% end %>
-         <li><%= link_to "All", products_path %></li> 
-         <span class="word-divider">|</span> 
         <% Page.order(:position).all.published.each do |page| %>
           <li><%= link_to page.name, page, alt: page.name, title: page.name %></li>
         <% end %>
+        <span class="word-divider">|</span> 
+        <li><a href="javascript:void(0)">Products</a>
+          <ul class="dropdown-content">
+            <% Category.all.each do |category| %>
+              <li><%= link_to category.name, products_path(category: category.name) %></li> 
+            <% end %>
+          </ul>
+        </li>
 
         <% if user_signed_in? %>
           <li class="account-link"><a href="javascript:void(0)">Account</a>

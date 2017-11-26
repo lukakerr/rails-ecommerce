@@ -42,7 +42,8 @@ a:hover {
   display: block;
   width: 100%;
   height: .1875rem;
-  background: #FBBE40;
+  background-image: -webkit-linear-gradient(left, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
+  background-image: linear-gradient(to right, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
   content: '';
   z-index: 99;
 }

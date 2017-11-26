@@ -1,4 +1,6 @@
 development:
+  POSTGRESQL_USERNAME: 'PG_Username'
+  POSTGRESQL_PASSWORD: 'PG_Password'
   ECOMMERCE_REPLY_TO_EMAIL: 'hello@gmail.com'
   ECOMMERCE_CONTACT_EMAIL: 'hello@gmail.com'
   ECOMMERCE_FACEBOOK_KEY: ''
@@ -10,6 +12,9 @@ development:
   AWS_ACCESS_KEY_ID: 'aws_access_key_id'
   AWS_SECRET_ACCESS_KEY: 'aws_secret_access_key'
   AWS_REGION: 'aws_region'
+test:
+  POSTGRESQL_USERNAME: 'PG_Username'
+  POSTGRESQL_PASSWORD: 'PG_Password'
 production:
   ECOMMERCE_REPLY_TO_EMAIL: 'hello@gmail.com'
   ECOMMERCE_CONTACT_EMAIL: 'hello@gmail.com'
