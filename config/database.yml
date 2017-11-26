@@ -19,5 +19,3 @@ production:
   database: ecommerce_production
   pool: 5
   timeout: 5000
-  username: <%= ENV['ECOMMERCE_DATABASE_USERNAME'] %>
-  password: <%= ENV['ECOMMERCE_DATABASE_PASSWORD'] %>
