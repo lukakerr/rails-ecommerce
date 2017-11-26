@@ -54,19 +54,26 @@ Make sure the database is running. Run `bundle exec rspec`.
   - Pages
   - Pictures
   - Checkouts
+- Facebook login
 - Admin features:
   - Can edit/update/delete records
 - User features:
   - Can add products to cart with multiple quantities
+  - Can checkout
+  
+### Stack
 
-- Users are able to create/edit/delete accounts
-- Admin users can create/edit/delete products, categories, banners, pictures
-- Admin users can view orders, users
-- Users can add products to the cart or go straight to checkout
-- Products can be on sale, featured, sold out
+The ruby version used is `2.4.2`, and rails version `5.0.5`, although using relatively older/newer versions shouldn't break anything.
+
+The application uses PostgreSQL as its database, so this must be installed.
+
+Images are uploaded to Amazon AWS S3, so an account with Amazon is needed.
+
+Tests are driven by `rspec`, `factory_bot` and `faker`.
 
 ### To Do
 
+- [ ] Add more tests
 - [ ] Integrate Stripe for payments
 - [ ] Add email confirmation
 - [ ] Add styling for products that are: on sale, featured or sold out

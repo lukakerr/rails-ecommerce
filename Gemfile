@@ -26,7 +26,6 @@ gem 'summernote-rails', '0.8.3.0'
 gem 'bootstrap-sass'
 gem 'aws-sdk'
 gem 'mail_form'
-gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 
 group :development, :test do
