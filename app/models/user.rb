@@ -1,33 +1,37 @@
 class User < ApplicationRecord
-	# Include default devise modules. Others available are:
-	# :confirmable, :lockable, :timeoutable
-	devise :database_authenticatable, :registerable,
-	:recoverable, :rememberable, :trackable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-	has_many :products
-	has_many :categories
-	has_many :orders
-	has_many :banners
+  has_many :products
+  has_many :categories
+  has_many :orders
+  has_many :banners
   has_many :checkouts
+  has_many :pages
 
-	has_attached_file :image, 
-		styles: { 
-			profile: "300x", thumb: "100x" 
-		}, 
-		:url => "/pictures/users/:id/:style/:filename", 
+  has_attached_file :image, 
+    styles: { 
+      profile: "300x", thumb: "100x" 
+    }, 
+    :url => "/pictures/users/:id/:style/:filename", 
     :path => ":rails_root/public/pictures/users/:id/:style/:filename",
     :convert_options => {
       :profile => "-strip",
       :thumb => "-quality 75 -strip" 
     },
-		default_url: "/images/missing.png"
+    default_url: "/images/missing.png"
   
   validates_attachment :image, 
     presence: true,
     content_type: { 
       content_type: ["image/jpeg", "image/jpg", "image/png"] 
-    }, 
+    },
+    size: {
+      less_than: 1.megabytes 
+    },
     if: Proc.new {|a| a.image.present? }
 
   validates :first_name, presence: false, length: { in: 2..100 }, :allow_blank => true 
@@ -35,7 +39,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { in: 5..100 }, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :phone, presence: false, length: { in: 10..16 }, format: { with: /\A[\d\s-]+\z/ }, :allow_blank => true 
 
-	validates :shipping_address, :billing_address, presence: false, length: { in: 5..200 }, :allow_blank => true 
+  validates :shipping_address, :billing_address, presence: false, length: { in: 5..200 }, :allow_blank => true 
   validates :shipping_suburb, :billing_suburb, presence: false, length: { in: 2..50 }, format: { with: /\A[A-Za-z\s]+\z/ }, :allow_blank => true 
   validates :shipping_zip, :billing_zip, presence: false, :allow_blank => true 
   validates_inclusion_of :shipping_zip, :billing_zip, :in => 1000..9999, :allow_blank => true 

@@ -1,0 +1,18 @@
+.page-form {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.page-form div.boolean {
+  margin: 5px 0 30px 20px;
+}
+
+.page-show {
+  margin: 50px 10%;
+}
+
+#pages-list p::before {
+  content:'\2630';
+  margin-right: 10px;
+  cursor: move;
+}

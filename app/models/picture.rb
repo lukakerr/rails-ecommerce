@@ -1,5 +1,5 @@
 class Picture < ApplicationRecord
-	belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, polymorphic: true
 
   DEFAULT_STYLES = {
     original: "1000x", 
@@ -10,8 +10,8 @@ class Picture < ApplicationRecord
 
   has_attached_file :image, 
     styles: -> (image) { image.instance.styles }, 
-    :url => "/pictures/:id/:style/:filename", 
-    :path => ":rails_root/public/pictures/:id/:style/:filename",
+    :url => "/pictures/:imageable_type/:id/:style/:filename", 
+    :path => ":rails_root/public/pictures/:imageable_type/:id/:style/:filename",
     :convert_options => {
       :original => "-strip",
       :product => "-strip",
@@ -24,6 +24,9 @@ class Picture < ApplicationRecord
     presence: true,
     content_type: { 
       content_type: ["image/jpeg", "image/jpg", "image/png"] 
+    },
+    size: {
+      less_than: 1.megabytes 
     }
 
   # Workaround to pickup styles from imageable model(s)

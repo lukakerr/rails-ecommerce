@@ -1,5 +1,5 @@
 <div class="text-center">
-	<div class="categories">
+  <div class="categories">
     <h1 class="grid-title">All Categories</h1>
     <div class="grid">
       <% Category.all.each do |category| %>
@@ -10,7 +10,7 @@
       <% end %>
     </div>
   </div>
-	
-	<br><br>
-	<%= link_to "New Category", new_category_path, class: "button" %>
+  
+  <br><br>
+  <%= link_to "New Category", new_category_path, class: "custom-button" %>
 </div>

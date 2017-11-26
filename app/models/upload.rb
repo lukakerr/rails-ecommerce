@@ -1,15 +1,12 @@
-class Category < ApplicationRecord
-  has_many :products
+class Upload < ApplicationRecord
   belongs_to :user
-
-  validates :name, presence: true, length: { in: 2..30 }, format: { with: /\A[A-Za-z\s]+\z/ }
-
+  
   has_attached_file :image, 
     styles: { 
-      original: "300x" 
+      original: "1000x" 
     }, 
-    :url => "/pictures/categories/:id/:style/:filename", 
-    :path => ":rails_root/public/pictures/categories/:id/:style/:filename",
+    :url => "/pictures/uploads/:id/:style/:filename", 
+    :path => ":rails_root/public/pictures/uploads/:id/:style/:filename",
     :convert_options => {
       :original => "-strip",
     },
@@ -19,9 +16,10 @@ class Category < ApplicationRecord
     presence: true,
     content_type: { 
       content_type: ["image/jpeg", "image/jpg", "image/png"] 
-    }, 
+    },
     size: {
       less_than: 1.megabytes 
     },
     if: Proc.new {|a| a.image.present? }
+      
 end

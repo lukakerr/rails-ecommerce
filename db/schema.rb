@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909021740) do
+ActiveRecord::Schema.define(version: 20171125211111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,23 @@ ActiveRecord::Schema.define(version: 20170909021740) do
     t.index ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "user_id"
+    t.string   "slug",               null: false
+    t.boolean  "contact_form"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.boolean  "published"
+    t.integer  "position"
+    t.index ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
+  end
+
   create_table "pictures", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -109,6 +126,15 @@ ActiveRecord::Schema.define(version: 20170909021740) do
     t.datetime "updated_at",                          null: false
     t.integer  "category_id"
     t.integer  "user_id"
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

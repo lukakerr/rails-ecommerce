@@ -29,26 +29,16 @@
 	  padding: 15px 5% ;
 	}
 
-	.footer {
+	.footer, .home-section-flex {
 		-webkit-flex-direction: column;
 	  flex-direction: column;
-	  height: 630px;
 	}
 
-	.top-banner:before {
-		position: fixed;
-	}
-
-	.mob-menu {
+	.mob-nav, .mob-logo {
 		display: block !important;
 	}
 
-	.mob-nav {
-		margin-bottom: 50px !important;
-		display: table !important;
-	}
-
-	.logo, .nav {
+	.nav {
 		display: none;
 	}
 
@@ -57,13 +47,7 @@
 		margin-top: -75px;
 	}
 
-	.image-gallery.banner, .banner-slider, #previous, #next {
-		height: 300px;
-	}
-
-	.banner-image-gallery-links {
-		top: 250px;
-	}
+	
 
 	.banner-show {
 		margin-top: 0 !important;

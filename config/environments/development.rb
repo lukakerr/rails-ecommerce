@@ -37,8 +37,8 @@ Rails.application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttle_auto: true,
-    user_name: ENV["ECOMMERCE_GMAIL_USERNAME"],
-    password: ENV["ECOMMERCE_GMAIL_PASSWORD"]
+    user_name: Rails.configuration.default['ECOMMERCE_GMAIL_USERNAME'],
+    password: Rails.configuration.default['ECOMMERCE_GMAIL_PASSWORD']
   }
 
   config.action_mailer.perform_caching = false

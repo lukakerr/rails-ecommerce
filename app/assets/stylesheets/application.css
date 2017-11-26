@@ -1,73 +1,77 @@
 /*
 *= require_tree .
 *= require_self
+*= require jquery-ui
+*= stub wysiwyg
 */
 
 /*
-	Colours
-	#0EAFC1 - blue
-	#3E4348 - dark grey
+  Colours
+  #0EAFC1 - blue
+  #3E4348 - dark grey
 */
 
 /* General */
 
 body, html {
-	margin: 0;
-	padding: 0;
-	line-height: 1;
-	font-family: Helvetica Neue;
-	-webkit-font-smoothing: subpixel-antialiased;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-family: Helvetica Neue;
+  -webkit-font-smoothing: subpixel-antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	height: 100%;
+  height: 100%;
 }
 
 a {
-	color: #AAA;
-	text-decoration: none;
-	transition: all 0.5s;
+  color: #AAA !important;
+  text-decoration: none !important;
+  transition: all 0.5s;
 }
 
 a:hover {
-	color: #888;
-	transition: all 0.5s;
+  color: #888;
+  transition: all 0.5s;
 }
 
 .wrapper {
-	min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
 }
 
 .top-banner:before {
-	display: block;
+  display: block;
   width: 100%;
   height: .1875rem;
-  background-image: -webkit-linear-gradient(left, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
-  background-image: linear-gradient(to right, #0EAFC1, #015C5F, #EC972A, #E56C03, #3E4348);
+  background: #FBBE40;
   content: '';
   z-index: 99;
 }
 
-.notice, .alert {
-	position: absolute;
-	top: 0;
-	left: 20px;
+.notice, .alert, .contact-success {
+  position: absolute;
+  left: 20px;
 }
 
-.notice {
-	color: green;
+.notice, .contact-success {
+  color: green;
+}
+
+.contact-success {
+  top: 20px;
 }
 
 .alert {
-	color: red;
+  color: red;
 }
 
 .center {
-	display: table; 
-	margin: 0 auto;
+  display: table; 
+  margin: 0 auto;
 }
 
 .admin-links a {
-	display: block;
-	margin: 15px 10px;
+  display: block;
+  margin: 15px 10px;
 }
 
 /* Typography */

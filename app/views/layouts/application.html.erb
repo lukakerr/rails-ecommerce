@@ -6,82 +6,104 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ecommerce | Check out our products">
+  <meta name="keywords" content="website, ecommerce">
+  
+  <% if Rails.env.production? %>
+      <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '<%= Rails.configuration.default['ECOMMERCE_GOOGLE_ANALYTICS_CODE'] %>', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  <% end %>
 </head>
 
 <body <% if content_for?(:body_attributes) %>
         <%= yield(:body_attributes) %> 
       <% end %>>
   
-	<p class="notice"><%= notice %></p>
+  <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <p class="contact-success"><%= contact_success %></p>
 
   <div class="wrapper">
     <div class="top-banner"></div>
-
-    <div class="mob-menu">Barefoot Gypsy</div>
+    
+    <div class="mob-logo">
+      <%= link_to image_tag("/assets/logo.png"), root_path, 'data-turbolinks' => false, alt: "Home", title: "Home" %>
+    </div>
     <div class="mob-nav">
-      <span class="menubutton">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </span>
-      <div>
-        <ul>
-          <li><%= link_to "Home", root_path, 'data-turbolinks' => false %></li>
-          <br>
-          <% Category.all.each do |category| %>
-            <li><%= link_to category.name, products_path(category: category.name) %></li>
+      <input type="checkbox" id="bar-input">
+      <div class="side-bar">
+        <b><%= link_to "Home", root_path, 'data-turbolinks' => false, alt: "Home", title: "Home" %></b>
+        <% Category.all.each do |category| %>
+          <%= link_to category.name, products_path(category: category.name) %>
+        <% end %>
+        <hr>
+        <% Page.order(:position).all.published.each do |page| %>
+          <%= link_to page.name, page, alt: page.name, title: page.name %>
+        <% end %>
+        <hr>
+        <% if user_signed_in? %>
+          <%= link_to "My Account", edit_user_registration_path, alt: "My Account", title: "My Account" %>
+          <% if current_user.admin %>
+            <%= link_to "Add Product", new_product_path %> 
+            <%= link_to "Categories", categories_path %> 
+            <%= link_to "Pages", pages_path %>
+            <%= link_to "Banners", all_banners_path %>
+            <%= link_to "Orders", checkouts_path %> 
           <% end %>
-          <br><br>
-          <% if user_signed_in? %>
-            <% if current_user.admin %>
-              <li><%= link_to "Add Product", new_product_path %></li>
-              <li><%= link_to "Categories", categories_path %></li>
-              <li><%= link_to "Banners", all_banners_path %></li>
-              <li><%= link_to "Orders", checkouts_path %></li>
-            <% end %>
-            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Log In", new_user_session_path %></li>
-          <% end %>
-        </ul>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, alt: "Log Out", title: "Log Out" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, alt: "Log In", title: "Log In" %>
+        <% end %>
+         <span class="cart-text cart-text-mobile"><%= render 'layouts/cart_text' %></span> 
       </div>
-      <span class="cart-text cart-text-mobile"><%= render 'layouts/cart_text' %></span>
+
+      <label for="bar-input" class="bar-label">
+        <div class="bar-div diagonal one"></div>
+        <div class="bar-div horizontal"></div>
+        <div class="bar-div diagonal two"></div>
+      </label>
     </div>
 
     <div class="nav">
       <div class="logo">
-        <%= link_to image_tag("/assets/logo.jpg"), root_path, 'data-turbolinks' => false %>
+        <%= link_to image_tag("/assets/logo.png"), root_path, 'data-turbolinks' => false, alt: "Home", title: "Home" %>
       </div>
       <div class="nav-links">
         <% Category.all.each do |category| %>
-          <li><%= link_to category.name, products_path(category: category.name) %></li>
+           <li><%= link_to category.name, products_path(category: category.name) %></li> 
         <% end %>
-        <li><%= link_to "All", products_path %></li>
-        <span class="word-divider">|</span>
-        <li><a href="javascript:void(0)">Info</a>
-          <ul class="dropdown-content">
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
-          </ul>
-        </li>
+         <li><%= link_to "All", products_path %></li> 
+         <span class="word-divider">|</span> 
+        <% Page.order(:position).all.published.each do |page| %>
+          <li><%= link_to page.name, page, alt: page.name, title: page.name %></li>
+        <% end %>
 
         <% if user_signed_in? %>
           <li class="account-link"><a href="javascript:void(0)">Account</a>
             <ul class="dropdown-content">
-              <li><%= link_to "My Account", edit_user_registration_path %></li>
+              <li><%= link_to "My Account", edit_user_registration_path, alt: "My Account", title: "My Account" %></li>
               <% if current_user.admin %>
-                <li><%= link_to "Add Product", new_product_path %></li>
-                <li><%= link_to "Categories", categories_path %></li>
+                <li><%= link_to "Add Product", new_product_path %></li> 
+                <li><%= link_to "Categories", categories_path %></li> 
+                <li><%= link_to "Pages", pages_path %></li>
                 <li><%= link_to "Banners", all_banners_path %></li>
                 <li><%= link_to "Orders", checkouts_path %></li>
               <% end %>
-              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, alt: "Log Out", title: "Log Out" %></li>
             </ul>
           </li>
         <% else %>
-          <li class="account-link"><%= link_to "Log In", new_user_session_path %></li>
+          <li class="account-link"><%= link_to "Log In", new_user_session_path, alt: "Log In", title: "Log In" %></li>
         <% end %>
       </div>
       <span class="cart-text"><%= render 'layouts/cart_text' %></span>
@@ -93,21 +115,20 @@
 
   <div class="footer">
       <div class="column">
-        <span class="col-header">Products</span>
+        <span class="col-header">About</span>
+        <p>About your website.</p>
+      </div>
+      <div class="column">
+        <span class="col-header">Categories</span>
         <% Category.all.each do |category| %>
           <%= link_to category.name, products_path(category: category.name) %>
         <% end %>
       </div>
       <div class="column">
-        <span class="col-header">Header</span>
-        <% Category.all.each do |category| %>
-          <%= link_to category.name, products_path(category: category.name) %>
+        <span class="col-header">Pages</span>
+        <% Page.order(:position).all.published.each do |page| %>
+          <%= link_to page.name, page, alt: page.name, title: page.name %>
         <% end %>
-      </div>
-      <div class="column">
-        <span class="col-header">Info</span>
-        <%= link_to "About", about_path %>
-        <%= link_to "Contact", contact_path %>
       </div>
     </div>
 

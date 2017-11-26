@@ -11,9 +11,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-/config/secrets_backup.yml
-
 /public/system
 /public/system/*
 /public/pictures
 /public/pictures/*
+/public/assets
+/public/assets/*

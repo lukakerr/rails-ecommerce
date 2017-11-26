@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag "wysiwyg" %>
+
+<div class="page-form">
+  <%= simple_form_for @page, :html => { multipart: true }, validate: true do |f| %>
+    <%= f.input :name %>
+    <%= f.input :contact_form %>
+    <%= f.input :published %>
+    <%= f.input :image, as: :file, label: "Display Image" %>
+    <%= f.input :content, as: :summernote, :input_html => { :id => "summernote", :class => "summernote" } %>
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -1,11 +1,29 @@
 //= require jquery
+//= require jquery.turbolinks
+//= require jquery-ui/widgets/sortable
 //= require jquery_ujs
-//= require turbolinks
 //= require rails.validations
 //= require rails.validations.simple_form
-// = require_tree .
-$(document).on('turbolinks:load load', function() {
 
+//= require bootstrap
+//= require summernote
+//= require turbolinks
+//= require_tree .
+
+$(document).on('turbolinks:load load', function() {
+  
+  $('#summernote').summernote({
+    height: 500,
+    minHeight: 300,
+    maxHeight: null,
+    focus: false
+  });
+  
+  if (typeof ga === "function") {
+    ga("set", "location", event.data.url);
+    return ga("send", "pageview");
+  }
+  
   // Devise edit user password
   $(".edit-password").keyup(function(event) {
     if ($(".edit-password").val().length == 0) {

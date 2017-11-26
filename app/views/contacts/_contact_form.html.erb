@@ -1,0 +1,14 @@
+<%= simple_form_for @contact, validate: true do |f| %>
+  <%= f.input :name, :required => true %>
+  <%= f.input :email, :required => true %>
+  <%= f.input :phone %>
+  <%= f.input :address %>
+  <%= f.input :message, :as => :text, :required => true %>
+  <div class= "hidden">
+    <%= f.input :nickname, :as => :hidden %>
+  </div>
+  <div>
+    </br>
+    <%= f.button :submit, 'Send' %>
+  </div>
+<% end %>

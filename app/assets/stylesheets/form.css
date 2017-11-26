@@ -39,7 +39,12 @@ input[type='checkbox'] {
 	margin: 0 10px 20px 0;
 }
 
-input[type='submit'], button, .button {
+abbr[title], abbr[data-original-title] {
+	cursor: default !important;
+	border: none !important;
+}
+
+input[type='submit'], button, .custom-button {
 	background-color: #0EAFC1;
 	border: 0;
 	border-radius: 5px;
@@ -52,7 +57,11 @@ input[type='submit'], button, .button {
 	transition: all 0.3s;
 }
 
-input[type='submit']:hover, button:hover, .button:hover {
+.custom-button {
+	color: #fff !important;
+}
+
+input[type='submit']:hover, button:hover, .custom-button:hover {
 	opacity: 0.8;
 	transition: all 0.3s;
 	color: white;
@@ -67,7 +76,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
 
-.button {
+.custom-button {
 	display: inline-block;
 }
 
@@ -101,4 +110,16 @@ div.error_notification {
 
 .devise-links {
 	line-height: 1.5em;
+}
+
+/* Contact form */
+
+.contact-form {
+	padding: 0 5%;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.contact-form textarea {
+	margin-top: 20px;
 }

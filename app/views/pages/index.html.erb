@@ -1,0 +1,13 @@
+<div class="text-center">
+  <div class="categories">
+    <h1 class="grid-title">All Pages</h1>
+    <div id="pages-list" data-update-url="<%= sort_pages_url %>">
+      <% Page.all.each do |page| %>
+        <p id="page_<%= page.id %>"><%= link_to page.name, page %></p>
+      <% end %>
+    </div>
+  </div>
+  
+  <br><br>
+  <%= link_to "New Page", new_page_path, class: "custom-button" %>
+</div>

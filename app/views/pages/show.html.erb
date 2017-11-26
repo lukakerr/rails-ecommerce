@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "wysiwyg" %>
+<br>
+<div class="page-show">
+  <%= raw @page.content %>
+</div>
+
+<% if @page.contact_form %>
+  <div class="contact-form">
+    <%= render "contacts/contact_form" %>
+  </div>
+<% end %>
+
+<div class="text-center">
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Edit Page", edit_page_path, class: "custom-button" %>
+    <%= link_to "Delete Page", page_path(@page), method: :delete, data: {confirm: "Are you sure?"}, class: "custom-button" %>
+  <% end %>
+</div>

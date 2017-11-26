@@ -1,5 +1,13 @@
 <div class="center">
   <%= simple_form_for @banner, :html => { :multipart => true }, validate: true do |f| %>
+  	<% if @banner.errors.full_messages.any? %>
+  		<div class="error_notification">
+  			<p>Error(s):</p>
+			  <% @banner.errors.full_messages.each do |error_message| %>
+			    	<p><%= error_message %></p>
+			  <% end %>
+			</div>
+		<% end %>
    	<%= f.input :name %>
 		<br>
 		<%= f.label :pictures %>

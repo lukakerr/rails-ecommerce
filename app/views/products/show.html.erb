@@ -1,53 +1,52 @@
 <div class="product">
-	<div class="image-gallery">
+  <div class="image-gallery">
      <div>
-				<% @product.pictures.each do |picture| %> 
-					<%= image_tag(picture.image.url(:product), :class => "slider") %>
+        <% @product.pictures.each do |picture| %> 
+          <%= image_tag(picture.image.url(:product), :class => "slider") %>
         <% end %>
         <div id="previous"></div>
         <div id="next"></div>
         <div class="image-gallery-links">
-	     		<% @product.pictures.each_with_index do |picture, index| %> 
-	        	<a href="<%= index + 1 %>"><%= index + 1 %></a>
-	        <% end %>
-	     </div>
+          <% @product.pictures.each_with_index do |picture, index| %> 
+            <a href="<%= index + 1 %>"><%= index + 1 %></a>
+          <% end %>
+       </div>
      </div>
-	</div>
+  </div>
 
-	<div class="product-details">
-		<% if @product.on_sale %>
-			<span class="on-sale"><%= number_to_human(100 - ((@product.price / @product.old_price) * 100), strip_insignificant_zeros: true) %>% Off</span>
-		<% end %>
+  <div class="product-details">
+    <% if @product.on_sale %>
+      <span class="on-sale"><%= number_to_human(100 - ((@product.price / @product.old_price) * 100), strip_insignificant_zeros: true) %>% Off</span>
+    <% end %>
 
-		<h2><%= @product.name %></h2>
-		<% if @product.on_sale && @product.old_price %>
-			<h3><span class="old-price">$<%= @product.old_price %>0</span>$<%= @product.price %>0</h3>
-		<% else %>
-			<h3>$<%= @product.price %>0</h3>
-		<% end %>
-		<p><%= @product.description %></p>
+    <h2><%= @product.name %></h2>
+    <% if @product.on_sale && @product.old_price %>
+      <h3><span class="old-price">$<%= @product.old_price %>0</span>$<%= @product.price %>0</h3>
+    <% else %>
+      <h3>$<%= @product.price %>0</h3>
+    <% end %>
+    <p><%= @product.description %></p>
 
-		<hr>
-	
-		<%= form_for @order_item, remote: true, :html => { id: "add-to-cart-form" } do |f| %>
+    <hr>
+    <%= form_for @order_item, remote: true, :html => { id: "add-to-cart-form" } do |f| %>
       <div>
         <p>Quantity:</p>
         <%= f.select :quantity, (1..@product.quantity), {}, value: @product.quantity.to_i %>
         <div>
           <%= f.hidden_field :product_id, value: @product.id %>
           <br>
-         <%= link_to "Add To Cart", "", :onclick => "$('#add-to-cart-form').submit()", class: "button text-sm" %>
+         <%= link_to "Add To Cart", "", :onclick => "$('#add-to-cart-form').submit()", class: "custom-button text-sm" %>
         </div>
       </div>
     <% end %>
 
-	</div>
+  </div>
 
 </div>
 
 <div class="text-center">
-	<% if current_user && current_user.admin? %>
-		<%= link_to "Edit Product", edit_product_path, class: "button" %>
-		<%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
-	<% end %>
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Edit Product", edit_product_path, class: "custom-button" %>
+    <%= link_to "Delete Product", product_path(@product), method: :delete, data: {confirm: "Are you sure?"}, class: "custom-button" %>
+  <% end %>
 </div>

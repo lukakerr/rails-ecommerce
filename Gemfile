@@ -22,6 +22,12 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'omniauth-facebook'
 gem 'will_paginate', '~> 3.1.0'
+gem 'summernote-rails', '0.8.3.0'
+gem 'bootstrap-sass'
+gem 'aws-sdk'
+gem 'mail_form'
+gem 'jquery-turbolinks'
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

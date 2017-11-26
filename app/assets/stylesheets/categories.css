@@ -1,6 +1,8 @@
 /* Home Page Category Images */
 .home-categories {
-  margin-top: 100px;
+  position: relative;
+  top: 50px;
+  margin-bottom: 200px;
 }
 
 /* Both Category Pages */

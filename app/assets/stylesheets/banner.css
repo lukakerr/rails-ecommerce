@@ -1,11 +1,8 @@
 .image-gallery.banner {
 	width: 100%;
 	margin-top: -50px;
-	height: 600px;
-}
-
-.image-gallery.banner {
-  padding: 15px 0;
+	height: 100%;
+	padding: 15px 0;
 }
 
 .image-gallery.banner-show {
@@ -13,25 +10,32 @@
 	margin-top: 0;
 }
 
+.image-gallery.banner img {
+	height: auto;
+	max-height: 800px
+}
+
 .banner-slider {
 	width: 100% !important;
 	max-width: 100% !important;
 	object-fit: cover;
-	height: 600px;
+	height: 100%;
 }
 
 #previous, #next {
-	height: 600px;
+	height: 100%;
+	z-index: 2;
 }
 
 .banner-image-gallery-links {
-	position: absolute;
-	top: 550px;
+	position: relative;
+	top: -50px;
 	left: 0; 
   right: 0; 
   margin: auto;
   height: 40px;
   cursor: default;
+  z-index: 3;
 }
 
 .banner-image-gallery-links a {
@@ -44,8 +48,3 @@
 	font-size: 12px !important;
 	margin: 10px 3px 15px 3px !important;
 }
-
-.banner-links-hidden {
-	display: none;
-}
-

@@ -1,23 +1,23 @@
 <div class="center">
-	<h1 class="grid-title">Preview</h1>
+  <h1 class="grid-title">Preview</h1>
 </div>
 
 <div class="image-gallery banner banner-show">
    <div>
-			<% @banner.pictures.each do |picture| %>  
-				<%= image_tag(picture.image.url(:original), :class => "slider banner-slider") %>
+      <% @banner.pictures.each do |picture| %>  
+        <%= image_tag(picture.image.url(:original), :class => "slider banner-slider") %>
       <% end %>
       <div id="previous"></div>
       <div id="next" class="next-banner"></div>
       <div class="image-gallery-links banner-image-gallery-links <%= @banner.pictures.count == 1 ? 'banner-links-hidden' : '' %>">
-     		<% @banner.pictures.each_with_index do |picture, index| %> 
-        	<a href="<%= index + 1 %>"><%= index + 1 %></a>
+        <% @banner.pictures.each_with_index do |picture, index| %> 
+          <a href="<%= index + 1 %>"><%= index + 1 %></a>
         <% end %>
      </div>
    </div>
 </div>
 <br>
 <div class="text-center">
-	<%= link_to "Edit banner", edit_banner_path(@banner), class: "button" %>
-	<%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
+  <%= link_to "Edit banner", edit_banner_path(@banner), class: "custom-button" %>
+  <%= link_to "Delete banner", banner_path(@banner), method: :delete, data: {confirm: "Are you sure?"}, class: "custom-button" %>
 </div>

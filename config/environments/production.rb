@@ -23,7 +23,8 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
+  config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -61,8 +62,8 @@ Rails.application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttle_auto: true,
-    user_name: ENV.fetch('ECOMMERCE_GMAIL_USERNAME'),
-    password: ENV.fetch('ECOMMERCE_GMAIL_PASSWORD')
+    user_name: Rails.configuration.default['ECOMMERCE_GMAIL_USERNAME'],
+    password: Rails.configuration.default['ECOMMERCE_GMAIL_PASSWORD']
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
@@ -96,4 +97,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  # Paperclip AWS
+  config.paperclip_defaults = {
+    storage: :s3,
+    preserve_files: true,
+    s3_credentials: {
+      bucket: Rails.configuration.default['S3_BUCKET_NAME'],
+      access_key_id: Rails.configuration.default['AWS_ACCESS_KEY_ID'],
+      secret_access_key: Rails.configuration.default['AWS_SECRET_ACCESS_KEY'],
+      s3_region: Rails.configuration.default['AWS_REGION'],
+      s3_host_name: 's3-ap-southeast-2.amazonaws.com'
+    }
+  }
 end
