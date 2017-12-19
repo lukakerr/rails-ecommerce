@@ -1,11 +1,11 @@
 #= require jquery
 #= require jquery-ui/widgets/sortable
 #= require jquery_ujs
-#= require rails.validations
-#= require rails.validations.simple_form
 #= require bootstrap
 #= require summernote
 #= require turbolinks
+#= require rails.validations
+#= require rails.validations.simple_form
 #= require_tree .
 
 $(document).on 'turbolinks:load load', ->

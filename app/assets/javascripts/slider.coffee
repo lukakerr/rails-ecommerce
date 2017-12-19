@@ -19,6 +19,7 @@ $(document).on "turbolinks:load load page:change", ->
   init = ->
     loadImg()
     boldText()
+    restartInterval()
 
   loadImg = ->
     currentImg.stop().fadeTo "slow", 1
@@ -95,8 +96,12 @@ $(document).on "turbolinks:load load page:change", ->
   
   init()
   
+  # Just in case turbolinks breaks stuff
   $(window).on "resize load", ->
     $("#previous").height $(".slider").height()
     $("#next").height $(".slider").height()
+
+  $("#previous").height $(".slider").height()
+  $("#next").height $(".slider").height()
     
   $(".banner-image-gallery-links").width parseInt(numberofImgs) * 34

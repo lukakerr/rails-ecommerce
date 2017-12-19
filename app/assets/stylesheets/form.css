@@ -4,7 +4,7 @@ form {
 	min-width: 400px;
 }
 
-input:not([type='submit']):not([type='file']):not([type='checkbox']) , textarea {
+input:not([type='submit']):not([type='file']):not([type='checkbox']):not([type='radio']) , textarea {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 	display: block;
@@ -17,6 +17,11 @@ input:not([type='submit']):not([type='file']):not([type='checkbox']) , textarea 
 	vertical-align: middle;
 	width: 100%;
 	transition: .3s;
+}
+
+button:disabled, button:disabled:hover {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 textarea {

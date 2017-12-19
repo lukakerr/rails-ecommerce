@@ -1,6 +1,6 @@
 .grid-title {
   display: inline-block;
-  padding: 0 20px;
+  padding: 0 2px;
   border-bottom: 1px solid #888;
   font-weight: 200;
   text-transform: lowercase;
@@ -9,7 +9,7 @@
   color: #888;
   text-align: center;
   display: table;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .grid {

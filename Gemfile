@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 gem 'aws-sdk'
 gem 'mail_form'
 gem 'jquery-ui-rails'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -1,5 +1,18 @@
 <div class="products text-center">
- <h1 class="grid-title full-width"><%= @category ? @category.name : "All Products" %></h1>
+	<h1 class="grid-title full-width"><%= @category ? @category.name : "All Products" %></h1>
+
+	<li class="product-sort"><a href="javascript:void(0)">Sort</a>
+    <ul class="dropdown-content">
+    	<% cat_name = @category ? @category.name : "" %>
+      <li><%= link_to "Date: New - Old", :sort => "created_at DESC", :category => cat_name %></li>
+			<li><%= link_to "Date: Old - New", :sort => "created_at ASC", :category => cat_name %></li>
+			<li><%= link_to "Price: High - Low", :sort => "price DESC", :category => cat_name %></li>
+			<li><%= link_to "Price: Low - High", :sort => "price ASC", :category => cat_name %></li>
+			<li><%= link_to "Name: A-Z", :sort => "name", :category => cat_name %></li>
+			<li><%= link_to "Name: Z-A", :sort => "name DESC", :category => cat_name %></li>
+    </ul>
+  </li>
+
 	<div class="grid">
 		<% @product.each do |product| %>
 			<div class="grid-item">

@@ -25,7 +25,7 @@
 
     <div class="cart-finish">
       <h3 class="cart-total">Total: <%= number_to_currency @order.subtotal %></h3>
-      <%= link_to "Checkout Now", new_checkout_path(order_id: @order.id), class: "button" %>
+      <%= link_to "Checkout Now", new_checkout_path(order_id: @order.id), class: "custom-button" %>
     </div>
   </div>
 <% end %>

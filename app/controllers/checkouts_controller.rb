@@ -9,10 +9,10 @@ class CheckoutsController < ApplicationController
 
   def show
     @order = Order.find_by_id(@checkout.order_id)
-      @order_items = Order.find_by_id(@order.id).order_items
-      @order_items.each do |order_item|
-        @products = Product.where(id: order_item.product_id)
-      end
+    @order_items = Order.find_by_id(@order.id).order_items
+    @order_items.each do |order_item|
+      @products = Product.where(id: order_item.product_id)
+    end
   end
 
   def new
@@ -21,6 +21,7 @@ class CheckoutsController < ApplicationController
 
   def create
     @checkout = Checkout.new(checkouts_params)
+
     if @order.present?
       @checkout.set_gst(@order.subtotal, @order.gst)
       @checkout.order_id = @order.id
@@ -32,6 +33,7 @@ class CheckoutsController < ApplicationController
       if @checkout.save
         session.delete(:order_id)
         session[:checkout_id] = @checkout.id
+
         # Creates a new order for the customer when they checkout
         # Saves old order record, which is referred to by the checkout record
         if current_user
@@ -40,7 +42,15 @@ class CheckoutsController < ApplicationController
           order = Order.new
         end
         order.save
-        redirect_to @checkout
+
+        # Get the stripe payment token ID submitted by the form
+        token = params[:stripeToken]
+
+        if @checkout.create_charge(token)
+          redirect_to @checkout
+        else
+          redirect_to "new"
+        end
       else
         redirect_to "new"
       end

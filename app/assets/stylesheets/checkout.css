@@ -2,6 +2,40 @@
   display: none;
 }*/
 
+.shipping-radio-buttons input, .shipping-radio-buttons label {
+  display: inline-block;
+  margin: 0 0 20px 0;
+}
+
+.shipping-radio-buttons {
+  margin: -5px 0 10px 0;
+}
+
+.shipping-radio-buttons label {
+  top: 2px;
+  position: relative;
+}
+
+.checkout .checkout-header p {
+  cursor: pointer;
+}
+
+.checkout .checkout-header {
+  border-bottom: 1px solid #DDD;
+  margin: 20px 0;
+}
+
+/*
+.checkout .checkout-section {
+  border: 1px solid #DDD;
+  padding: 5%;
+  margin: 10px 0;
+}
+
+.checkout .checkout-section input {
+  width: calc(100% - 10px) !important;
+}
+
 .checkout-personal-header, .checkout-shipping-header, .checkout-billing-header {
   display: block;
   height: 60px;
@@ -19,4 +53,4 @@
 .next-button {
   font-size: 14px;
   padding: 10px 15px;
-}
+}*/

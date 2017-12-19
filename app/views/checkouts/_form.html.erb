@@ -1,41 +1,62 @@
-<div class="center">
-  <div class="checkout">
-      <%= simple_form_for @checkout, :html => { :multipart => true }, validate: true do |f| %>
-      <div class="checkout-personal">
-        <div class="checkout-personal-header">
-          <p>Personal Details</p>
-        </div>
-        <%= f.input :first_name, input_html: {value: current_user ? current_user.first_name : "" }  %>
-        <%= f.input :last_name, input_html: {value: current_user ? current_user.last_name : "" } %>
-        <%= f.input :email, input_html: {value: current_user ? current_user.email : "" } %>
-        <%= f.input :phone, input_html: {value: current_user ? current_user.phone : "" } %>
+<div class="checkout">
+  <%= simple_form_for @checkout, :html => { :multipart => true, :id => "checkout-form" }, validate: true do |f| %>
+    
+    <!-- Stripe server errors -->
+    <%= f.error :base %>
+
+    <div class="checkout-section checkout-personal">
+      <div class="checkout-header checkout-personal-header">
+        <p id="personal-details-title">Personal Details</p>
       </div>
+      <%= f.input :first_name, input_html: {value: current_user ? current_user.first_name : "" }  %>
+      <%= f.input :last_name, input_html: {value: current_user ? current_user.last_name : "" } %>
+      <%= f.input :email, input_html: {value: current_user ? current_user.email : "" } %>
+      <%= f.input :phone, input_html: {value: current_user ? current_user.phone : "" } %>
+      <button class="checkout-next checkout-next-billing center">Next</button>
+    </div>
 
-      <div class="next-button custom-button center">Next</div>
-
-      <div class="checkout-shipping">
-        <div class="checkout-shipping-header">
-          <p>Shipping Details</p>
-        </div>
-        <%= f.input :shipping_address, input_html: {value: current_user ? current_user.shipping_address : "" } %>
-        <%= f.input :shipping_suburb, input_html: {value: current_user ? current_user.shipping_suburb : "" } %>
-        <%= f.input :shipping_zip, input_html: {value: current_user ? current_user.shipping_zip : "" } %>
-        <%= f.input :shipping_state, input_html: {value: current_user ? current_user.shipping_state : "" } %>
+    <div class="checkout-section checkout-billing">
+      <div class="checkout-header checkout-billing-header">
+       <p id="billing-details-title">Billing Details</p>
       </div>
-
-      <div class="checkout-billing">
-        <div class="checkout-billing-header">
-          <p>Billing Details</p>
-        </div>
-        <%= f.input :billing_address, input_html: {value: current_user ? current_user.billing_address : "" } %>
-        <%= f.input :billing_suburb, input_html: {value: current_user ? current_user.billing_suburb : "" } %>
-        <%= f.input :billing_zip, input_html: {value: current_user ? current_user.billing_zip : "" } %>
-        <%= f.input :billing_state, input_html: {value: current_user ? current_user.billing_state : "" } %>
+      <%= f.input :billing_address, input_html: {value: current_user ? current_user.billing_address : "" } %>
+      <%= f.input :billing_suburb, input_html: {value: current_user ? current_user.billing_suburb : "" } %>
+      <%= f.input :billing_zip, input_html: {value: current_user ? current_user.billing_zip : "" } %>
+      <%= f.input :billing_state, input_html: {value: current_user ? current_user.billing_state : "" } %>
+      <div class="shipping-radio-buttons">
+        <input type="radio" name="billing_selection" id="use_billing_as_shipping" value="yes">
+        <label for="use_billing_as_shipping">Ship to my billing address</label>
+        <br>
+        <input type="radio" name="billing_selection" id="ship_another_address" value="no">
+        <label for="ship_another_address">Ship to a different address</label>
       </div>
+      <button class="checkout-next checkout-next-shipping center">Next</button>
+    </div>
 
-      <%= hidden_field_tag(:order_id, @order.id) %>
+    <div class="checkout-section checkout-shipping">
+      <div class="checkout-header checkout-shipping-header">
+        <p id="shipping-details-title">Shipping Details</p>
+      </div>
+      <%= f.input :shipping_address, input_html: {value: current_user ? current_user.shipping_address : "" } %>
+      <%= f.input :shipping_suburb, input_html: {value: current_user ? current_user.shipping_suburb : "" } %>
+      <%= f.input :shipping_zip, input_html: {value: current_user ? current_user.shipping_zip : "" } %>
+      <%= f.input :shipping_state, input_html: {value: current_user ? current_user.shipping_state : "" } %>
+      <button class="checkout-next checkout-next-payment center">Next</button>
+    </div>
 
-      <%= f.submit %>
-    <% end %>
-  </div>
+    <div class="checkout-section checkout-payment">
+      <div class="checkout-header checkout-payment-header">
+        <p id="payment-details-title">Payment Details</p>
+      </div>
+      <div id="card-element">
+        <!-- a Stripe Element will be inserted here. -->
+      </div>
+      <!-- Used to display Element errors -->
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <%= hidden_field_tag(:order_id, @order.id) %>
+
+    <%= f.submit "Complete Purchase" %>
+  <% end %>
 </div>

@@ -16,6 +16,8 @@ class Checkout < ApplicationRecord
   validates_inclusion_of :shipping_zip, :billing_zip, :in => 1000..9999, :allow_blank => true 
   validates :shipping_state, :billing_state, presence: true, length: { in: 2..3 }, :allow_blank => true 
 
+  # Set the stripe secret key
+  Stripe.api_key = Rails.configuration.default['STRIPE_API_KEY']
 
   def to_param
     slug
@@ -25,7 +27,30 @@ class Checkout < ApplicationRecord
     self.total = subtotal * (1 + (gst/100))
   end
 
+  def create_charge token
+    @amount = total * 100.0
+
+    customer = Stripe::Customer.create(
+      :email => email,
+      :source  => token
+    )
+
+    charge = Stripe::Charge.create(
+      :customer => customer.id,
+      :amount => trim(@amount),
+      :description => "Ecommerce Store Purchase",
+      :currency => "aud"
+    )
+  rescue Stripe::CardError => e
+    errors[:base] << e.message
+  end
+
   private
+
+  def trim num
+    i, f = num.to_i, num.to_f
+    i == f ? i : f
+  end
 
   def set_slug
     loop do

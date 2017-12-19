@@ -5,10 +5,14 @@ class ProductsController < ApplicationController
 
 	def index
 		if params[:category].blank?
-	  	@product = Product.all.order("created_at DESC")
+	  	@product = Product.all.order(params[:sort])
     else
     	@category_id = Category.find_by(name: params[:category]).id
-    	@product = Product.where(category_id: @category_id).order("created_at ASC")
+    	if params[:sort]
+    		@product = Product.where(category_id: @category_id).order(params[:sort])
+    	else
+    		@product = Product.where(category_id: @category_id).order("created_at ASC")
+    	end
     	@category = Category.find(@category_id)
     end
 	end
