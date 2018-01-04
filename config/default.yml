@@ -1,24 +1,44 @@
 development:
+  # PostgreSQL
   POSTGRESQL_USERNAME: 'User'
   POSTGRESQL_PASSWORD: 'Pass'
-  ECOMMERCE_REPLY_TO_EMAIL: 'hello@gmail.com'
-  ECOMMERCE_CONTACT_EMAIL: 'hello@gmail.com'
+
+  # Devise
+  ECOMMERCE_DEVISE_EMAIL: 'hello@gmail.com'
+
+  # Facebook login
   ECOMMERCE_FACEBOOK_KEY: ''
   ECOMMERCE_FACEBOOK_SECRET: ''
+
+  # Gmail
+  # Make sure "access for less secure apps" is turned on in gmail
+  # Used for:
+  # - contact form (contact form emails get sent to ECOMMERCE_GMAIL_USERNAME)
+  # - action mailer (email gets sent from ECOMMERCE_GMAIL_USERNAME)
   ECOMMERCE_GMAIL_USERNAME: 'hello@gmail.com'
   ECOMMERCE_GMAIL_PASSWORD: 'myPassword123'
+
+  # Google Analytics
   ECOMMERCE_GOOGLE_ANALYTICS_CODE: 'UA-xxxxxxxx-x'
+
+  # AWS S3
   S3_BUCKET_NAME: 's3_bucket_name'
   AWS_ACCESS_KEY_ID: 'aws_access_key_id'
   AWS_SECRET_ACCESS_KEY: 'aws_secret_access_key'
   AWS_REGION: 'aws_region'
+
+  # Stripe
+  # Can change for testing/production
+  # i.e. test: sk_test_xxx prod: sk_live_xxx
   STRIPE_API_KEY: 'sk_test_xxxxxx'
+
 test:
+  # PostgreSQL
   POSTGRESQL_USERNAME: 'User'
   POSTGRESQL_PASSWORD: 'Pass'
+
 production:
-  ECOMMERCE_REPLY_TO_EMAIL: 'hello@gmail.com'
-  ECOMMERCE_CONTACT_EMAIL: 'hello@gmail.com'
+  ECOMMERCE_DEVISE_EMAIL: 'hello@gmail.com'
   ECOMMERCE_FACEBOOK_KEY: ''
   ECOMMERCE_FACEBOOK_SECRET: ''
   ECOMMERCE_GMAIL_USERNAME: 'hello@gmail.com'
@@ -28,4 +48,4 @@ production:
   AWS_ACCESS_KEY_ID: 'aws_access_key_id'
   AWS_SECRET_ACCESS_KEY: 'aws_secret_access_key'
   AWS_REGION: 'aws_region'
-  STRIPE_API_KEY: 'sk_test_xxxxxx'
+  STRIPE_API_KEY: 'sk_live_xxxxxx'

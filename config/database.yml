@@ -19,3 +19,5 @@ production:
   database: ecommerce_production
   pool: 5
   timeout: 5000
+  # Username and password should be fetched from production environment
+  # Otherwise, copy the username and password as above and add to default.yaml

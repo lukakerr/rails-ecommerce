@@ -37,7 +37,7 @@ This includes things such as:
 - Facebook key/secrets (for Facebook login)
 - Google Analytics tracking code
 
-You need to change these from the placeholders to your specific variables.
+You need to change at least the PostgreSQL values to your specific values before starting the application.
 
 ### Test
 
@@ -55,11 +55,11 @@ Make sure the database is running. Run `bundle exec rspec`.
   - Pictures
   - Checkouts
 - Facebook login
-- Admin features:
-  - Can edit/update/delete records
-- User features:
-  - Can add products to cart with multiple quantities
-  - Can checkout
+- Stripe
+- AWS S3
+- Google Analytics
+- Email via Gmail
+- Cart
   
 ### Stack
 
