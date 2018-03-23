@@ -81,6 +81,7 @@
 .product-details .on-sale {
 	background: red;
 	padding: 10px 20px;
+  border-radius: 5px;
 	float: right;
 	color: white;
 	display: inline-block;

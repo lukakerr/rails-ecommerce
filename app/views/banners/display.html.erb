@@ -3,8 +3,12 @@
   <div class="grid">
     <% @banner.each do |banner| %>
       <div class="grid-item">
-        <% banner.pictures.limit(1).each do |picture| %>
-          <%= link_to image_tag(picture.image.url(:thumb)), banner, 'data-turbolinks' => false %>
+        <% if banner.pictures.length != 0 %>
+          <% banner.pictures.limit(1).each do |picture| %>
+            <%= link_to image_tag(picture.image.url(:thumb)), banner, 'data-turbolinks' => false %>
+          <% end %>
+        <% else %>
+          <%= link_to banner.name, banner %>
         <% end %>
         <span class="grid-caption"><%= banner.name %></span>
       </div>
