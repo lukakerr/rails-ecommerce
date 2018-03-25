@@ -3,7 +3,8 @@ $(document).on 'turbolinks:load load', ->
   form = document.getElementById('checkout-form')
 
   if form?
-    stripe = Stripe('pk_test_gTcozdsMknukMUF4VQjnudoX')
+    # Replace with your pk key - this one won't work
+    stripe = Stripe('pk_test_abcdefg')
     elements = stripe.elements()
 
     # Custom styling can be passed to options when creating an Element.

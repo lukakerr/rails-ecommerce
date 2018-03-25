@@ -74,7 +74,7 @@ Tests are driven by `rspec`, `factory_bot` and `faker`.
 ### To Do
 
 - [ ] Add more tests
-- [ ] Integrate Stripe for payments
+- [x] Integrate Stripe for payments
 - [ ] Add email confirmation
 - [ ] Add styling for products that are: on sale, featured or sold out
 - [ ] Integrate 'buy now' feature
