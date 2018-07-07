@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
   before_action :find_checkout, only: [:show]
   before_action :find_order, only: [:new, :create]
-  before_filter :authorize_admin, only: [:index]
+  before_action :authorize_admin, only: [:index]
 
   def index
     @checkouts = Checkout.all.order("created_at DESC")

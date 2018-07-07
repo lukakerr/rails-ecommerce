@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
 	before_action :find_product, only: [:show, :edit, :update, :destroy]
-	before_filter :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
+	before_action :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
 		if params[:category].blank?

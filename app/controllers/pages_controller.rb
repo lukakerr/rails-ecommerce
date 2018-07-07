@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :find_page, only: [:edit, :update, :destroy, :show]
-  before_filter :authorize_admin, only: [:edit, :update, :destroy, :new, :create]
+  before_action :authorize_admin, only: [:edit, :update, :destroy, :new, :create]
 
   def index
     @page = Page.order("position")

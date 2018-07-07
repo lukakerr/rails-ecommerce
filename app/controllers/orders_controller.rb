@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
 	before_action :find_order, only: [:new, :show, :edit]
-	before_filter :authorize, only: [:index, :show]
+	before_action :authorize, only: [:index, :show]
 	before_action :authorize_admin, only: [:index, :edit]
 
 	def index

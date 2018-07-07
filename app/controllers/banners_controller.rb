@@ -1,6 +1,6 @@
 class BannersController < ApplicationController
 	before_action :find_banner, only: [:show, :edit, :update, :destroy]
-	before_filter :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
+	before_action :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
 
 	def index
 		@banner = Banner.all.order("created_at DESC")

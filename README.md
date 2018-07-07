@@ -63,7 +63,7 @@ Make sure the database is running. Run `bundle exec rspec`.
   
 ### Stack
 
-The ruby version used is `2.4.2`, and rails version `5.0.5`, although using relatively older/newer versions shouldn't break anything.
+The ruby version used is `2.5.1`, and rails version `5.2.0`, although using relatively older/newer versions shouldn't break anything.
 
 The application uses PostgreSQL as its database, so this must be installed.
 
