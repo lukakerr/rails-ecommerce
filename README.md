@@ -14,9 +14,9 @@ $ git clone https://github.com/lukakerr/rails-ecommerce.git
 $ cd rails-ecommerce
 
 # Start the PostgreSQL server (this command may vary depending on how you installed PostgreSQL)
-$ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
+$ brew services start postgresql 
 
-# Setup the database (details for login etc ar in db/seeds.rb)
+# Setup the database (details for login etc are in db/seeds.rb)
 $ rake db:setup
 
 # Start the rails server
@@ -56,10 +56,11 @@ Make sure the database is running. Run `bundle exec rspec`.
   - Checkouts
 - Facebook login
 - Stripe
-- AWS S3
+- AWS S3 image hosting
 - Google Analytics
 - Email via Gmail
 - Cart
+- Heroku support
   
 ### Stack
 
@@ -67,7 +68,8 @@ The ruby version used is `2.5.1`, and rails version `5.2.0`, although using rela
 
 The application uses PostgreSQL as its database, so this must be installed.
 
-Images are uploaded to Amazon AWS S3, so an account with Amazon is needed.
+Images are uploaded to Amazon AWS S3, so an account with Amazon is needed (only
+in production).
 
 Tests are driven by `rspec`, `factory_bot` and `faker`.
 
@@ -81,3 +83,4 @@ Tests are driven by `rspec`, `factory_bot` and `faker`.
 - [ ] Add pagination for products
 - [ ] Improve overall styling
 - [ ] Fix validations that don't appear when image size is too large
+
