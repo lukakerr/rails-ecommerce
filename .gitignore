@@ -18,3 +18,6 @@
 /public/assets
 /public/assets/*
 .DS_Store
+
+# Ignore seed images, can provide own
+/db/seed/images

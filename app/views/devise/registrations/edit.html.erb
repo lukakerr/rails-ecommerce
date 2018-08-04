@@ -1,7 +1,7 @@
 <div class="center">
   <div class="devise-edit">
     <div class="user-image">
-      <%= image_tag @user.image %>
+      <%= image_tag @user.image.url(:thumb) %>
     </div>
     <div class="user-details">
       <p><%= @user.first_name %> <%= @user.last_name %></p>

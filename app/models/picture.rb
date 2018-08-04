@@ -38,12 +38,14 @@ class Picture < ApplicationRecord
   }
 
   after_save -> {
-    if !@image_reprocessed && (image_updated_at_changed? || imageable_type_changed?)
+    # If the image hasn't been processed, or it has been updated, then re-process it
+    if not @image_reprocessed || image_updated_at_changed? || imageable_type_changed?
       @image_reprocessed = true
       image.reprocess!
     end
   }
 
+  # If the imageable class has image styles then use those, otherwise use the defaults
   def styles
     if imageable_class.respond_to?(:image_styles)
       imageable_class.image_styles
